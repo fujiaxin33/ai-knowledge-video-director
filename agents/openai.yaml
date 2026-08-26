@@ -1,0 +1,7 @@
+interface:
+  display_name: "AI Knowledge Video Director"
+  short_description: "Direct and QC AI knowledge and software teaching videos"
+  default_prompt: "Use $ai-knowledge-video-director to plan and audit an AI software teaching video."
+  brand_color: "#F36B21"
+policy:
+  allow_implicit_invocation: true
