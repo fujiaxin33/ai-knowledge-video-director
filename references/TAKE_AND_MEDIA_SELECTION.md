@@ -19,6 +19,25 @@ Compare natural delivery, voice, light, focus, composition, and complete wording
 
 Use an alternate only for a missing sentence, serious verbal error, or unusable Master region. Cover the entire cross-take edit with a meaningful Screen, Freeze, B-roll, or Motion asset. The cover begins at least one frame before and ends at least one frame after the take change.
 
+## Clean A-roll lock
+
+Lock speech before visual and motion timing:
+
+```text
+Transcript + Audio Review
+→ Semantic Cleanup
+→ Clean A-roll EDL / QC
+→ Clean A-roll Master
+→ Visual Beats
+→ Motion Lock
+```
+
+Semantic cleanup removes failed starts, word repeats, sentence restarts, meaning duplicates, half-sentence NGs, and non-teaching pauses while preserving natural breathing, emphasis, and human cadence. Do not use silence detection alone.
+
+Record source take, in/out, retained meaning, and removal reason. Check every cut by listening; short audio fades may prevent clicks but must not hide a word-boundary error. If approved speech changes after lock, reopen subtitles, screen timing, motion, SFX, and frame-boundary review instead of leaving the old timeline in place.
+
+Use [CLEAN_AROLL_LOCK_TEMPLATE.md](../templates/CLEAN_AROLL_LOCK_TEMPLATE.md).
+
 ## Screen selection
 
 - Select states that prove the spoken action/result.

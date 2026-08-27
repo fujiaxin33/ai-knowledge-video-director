@@ -15,6 +15,8 @@
 - SOP / product documentation:
 - Real software / vault / project evidence:
 - Claims requiring verification:
+- Canonical product/tool/model/repository terms:
+- Verified identity/logo assets:
 
 ## Production Constraints
 
@@ -38,4 +40,6 @@
 - [ ] Information screens remain readable and semantically framed.
 - [ ] Motion explains state change rather than decorating pauses.
 - [ ] Subtitle, audio, export and frame-boundary QC are defined.
-
+- [ ] Clean A-roll locks before visual/motion timing.
+- [ ] Canonical terminology and product identity plans are defined.
+- [ ] Screen Hygiene and rolling PPT-risk audits are defined.

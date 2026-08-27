@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.1",
+  "assets": [
+    {
+      "id": "ASSET-001",
+      "source": "source_board_or_asset.png",
+      "element": "short semantic name",
+      "crop_or_target": {"x": 0, "y": 0, "width": 0, "height": 0},
+      "output": "asset.png",
+      "transparent": false,
+      "intended_beat": "",
+      "route": "rebuild_hyperframes_svg | transparent_png_webp | reject_full_board",
+      "background_leakage_review": {
+        "canvas_remnant": false,
+        "halo": false,
+        "neighbor_element": false,
+        "baked_text_or_caption": false
+      },
+      "status": "pending"
+    }
+  ]
+}

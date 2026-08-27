@@ -1,0 +1,7 @@
+{
+  "beats": [
+    {"id": "B01", "start": 0, "end": 6, "visual_type": "Concept Card"},
+    {"id": "B02", "start": 6, "end": 12, "visual_type": "Static Motion Page"},
+    {"id": "B03", "start": 12, "end": 22, "visual_type": "Real Screen"}
+  ]
+}

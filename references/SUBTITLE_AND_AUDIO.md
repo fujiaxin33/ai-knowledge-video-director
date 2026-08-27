@@ -18,6 +18,8 @@ Always prohibit karaoke, word-by-word highlight/color, bounce, and captions that
 
 Break by semantic phrase and natural pause. Merge tiny fragments that would flash. For fast knowledge video, keep each displayed line compact; for courses, prioritize readable phrases over arbitrary character quotas.
 
+Before subtitle lock, validate product/tool/model/repository/Skill names against the project-specific `CANONICAL_TERMS.json`. Correct ASR spelling, spacing, capitalization, and transliteration without turning one project's errors into a permanent global replacement list. Run the canonical validator again after title/overlay copy is finalized.
+
 ## Voice
 
 - Prefer the real voice.

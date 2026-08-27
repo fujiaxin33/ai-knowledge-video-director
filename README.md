@@ -6,6 +6,23 @@
 
 > Community project. Not an official OpenAI product.
 
+Current version: **v1.1.0**
+
+## What changed in v1.1
+
+The first production-validation update adds safeguards that became important during a complete real-world workflow:
+
+- build a project-specific terminology dictionary and validate final subtitles/copy;
+- lock semantically clean A-roll before motion timing;
+- strengthen annotation precision and “complete screen” proof;
+- run an explicit Screen Hygiene gate;
+- treat AI motherboards as extractable asset libraries, not final pages;
+- prefer real failure, software, result, and repository evidence;
+- route verified product logos only at meaningful identity moments;
+- flag rolling 10-second concept-only stretches as `PPT_RISK`.
+
+These rules are designed to reduce repeated correction cycles. They do not promise zero editing or replace human aesthetic/release judgment.
+
 ## 为什么做这个 Skill
 
 在连续制作知识类视频时，AI 剪辑经常出现这些问题：
@@ -33,11 +50,12 @@ Pre-production → First Cut → Polish → Final
 它会帮助 Codex：
 
 1. 判断内容等级、横竖画布和主要证据类型；
-2. 为每句关键信息分配 Human、Original Screen、HyperFrames、Remotion 或 NO EFFECT；
-3. 使用 `Full Context → Focus → Highlight → Hold` 组织软件教学；
-4. 把 Annotation 绑定到最终画布中的真实像素目标；
-5. 保留原始素材血缘与单一 Master Take 连续性；
-6. 在导出前检查安全区、闪帧、黑帧、码率、字幕和音频。
+2. 在Motion之前完成Clean A-roll，并建立Canonical Terms；
+3. 为每句关键信息分配 Human、Original Screen、HyperFrames、Remotion 或 NO EFFECT；
+4. 使用 `Full Context → Focus → Highlight → Hold` 组织软件教学；
+5. 把 Annotation 绑定到最终画布中的真实像素目标；
+6. 按Real Evidence优先级选择真实失败、软件、结果与Repo证据；
+7. 在导出前检查Screen Hygiene、PPT Risk、安全区、闪帧、黑帧、码率、字幕和音频。
 
 ## 工具分工
 
@@ -62,6 +80,8 @@ ai-knowledge-video-director/
 │   ├── LAYOUT_SYSTEM.md
 │   ├── SCREEN_DIRECTING.md
 │   ├── ANNOTATION_GEOMETRY.md
+│   ├── TERMINOLOGY_AND_PRODUCT_IDENTITY.md
+│   ├── ASSET_AND_EVIDENCE.md
 │   ├── MOTION_DESIGN.md
 │   └── ...
 ├── templates/
@@ -105,6 +125,8 @@ Use $ai-knowledge-video-director to plan and audit an AI software teaching video
 - `make_timeline_contact_sheet.py`
 - `detect_flash_frames.py`
 - `ffprobe_quality_check.py`
+- `validate_canonical_terms.py`
+- `detect_ppt_risk.py`
 
 运行这些脚本通常需要 Python 3、FFmpeg/FFprobe，以及 Pillow 和 NumPy。脚本提供可审查证据，但最终语义完整性和发布仍需人工确认。
 
@@ -116,8 +138,10 @@ Use $ai-knowledge-video-director to plan and audit an AI software teaching video
 - Motion copy 是压缩后的教学标签，不是第二套字幕。
 - Human first 是信任原则，不代表人物长期占据大画面。
 - 自动化目标是减少重复返工，不是取消人的最终判断。
+- Canonical Terms来自当前项目事实源，不是跨项目硬编码的错词表。
+- Verified Logo只在有教学意义的身份节点出现，不做持续品牌挂件。
+- AI母板先拆分、清理或重建；真实证据优先于AI示意图。
 
 ## License
 
 MIT License. See [LICENSE](LICENSE).
-

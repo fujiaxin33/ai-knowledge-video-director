@@ -24,5 +24,14 @@
 | One-frame leak/flash | Underlayer or blank is exposed | Integer-frame coverage and boundary review |
 | Direct visible take switch | Background/light jump | One Master Take; cover necessary switch |
 | Ending introduces a new unrelated layout | Narrative feels abruptly reset | Continue the established result/summary stage |
+| ASR misspells a product/tool name | Searchability and credibility fall | Project-specific canonical term pass + validator |
+| Real tool introduced by text only despite verified logo asset | Recognition is slower | One restrained verified Logo + Name + Role moment |
+| AI motherboard enters as a full static frame | Asset library becomes a PPT page | Extract/rebuild elements; inspect alpha/background leakage |
+| Extracted asset keeps warm-white canvas or halo | Element looks pasted on | Re-extract, clean alpha, or rebuild simple element |
+| AI illustration replaces available failure/software/repository proof | Teaching claim becomes untrustworthy | Follow Real Evidence hierarchy |
+| Motion is locked before semantic A-roll cleanup | Every speech cut causes retiming | Lock Clean A-roll before visual/motion timing |
+| Screen hides noise by excessive crop | Hygiene fix destroys context | Preserve app/path/target; use clean Freeze or rerecord |
+| Reused evidence contains old burned captions | Two subtitle systems compete | Mask/replace inherited caption before current subtitles |
+| Any rolling 10s is concept-only | Motion still reads as slides | Mark PPT_RISK and add semantically relevant evidence/state |
 
 Do not add a failure to this library from one project-specific preference. Promote only repeated or clearly transferable failures after user confirmation.

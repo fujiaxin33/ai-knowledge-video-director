@@ -1,0 +1,9 @@
+{
+  "beats": [
+    {"id": "B01", "start": 0, "end": 4, "visual_type": "Presenter"},
+    {"id": "B02", "start": 4, "end": 8, "visual_type": "Concept Card"},
+    {"id": "B03", "start": 8, "end": 14, "visual_type": "Real Screen"},
+    {"id": "B04", "start": 14, "end": 20, "visual_type": "Freeze Evidence"},
+    {"id": "B05", "start": 20, "end": 26, "visual_type": "Compare"}
+  ]
+}

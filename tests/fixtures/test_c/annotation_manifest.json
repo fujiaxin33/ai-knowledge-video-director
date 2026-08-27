@@ -1,0 +1,23 @@
+{
+  "canvas": {"width": 1920, "height": 1080, "fps": 30},
+  "safe_zones": [
+    {"id": "subtitle", "x": 210, "y": 900, "width": 1500, "height": 120, "start_frame": 0, "end_frame": 2699}
+  ],
+  "annotations": [
+    {
+      "id": "ANN-TEST-C",
+      "frame_path": "full_context_frame.png",
+      "start_frame": 900,
+      "end_frame": 1019,
+      "kind": "box",
+      "target": {"x": 720, "y": 260, "width": 600, "height": 320},
+      "annotation": {"x": 708, "y": 248, "width": 624, "height": 344},
+      "padding": 12,
+      "semantic_target": "The complete result panel named in narration",
+      "why_now": "The viewer must verify the result after the live action",
+      "avoid_safe_zones": ["subtitle"]
+    }
+  ],
+  "layout_elements": [],
+  "forbidden_pairs": []
+}

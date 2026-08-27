@@ -41,3 +41,19 @@ Freeze provides reading time. It may remove unrelated desktop chrome, empty area
 ## Source integrity
 
 Original Screen is evidence. Do not fabricate buttons, menus, prompts, responses, project results, or state changes. Preview/Final media is never a source for the next version.
+
+## Screen Hygiene gate
+
+Before a screen enters the timeline, inspect and record:
+
+- current app and page identity;
+- current teaching focus and required context;
+- desktop, wallpaper, taskbar, system tray, notifications, and unrelated windows;
+- unrelated browser tabs, bookmarks, address/search bars, projects, conversations, or personal data;
+- private/client/company information;
+- stale annotation, baked subtitles, and labels inherited from reused evidence;
+- whether the proposed crop removes noise without removing orientation or semantic boundaries.
+
+The goal is `Context Preserved + Noise Removed`. Do not solve hygiene by zooming so far that the viewer cannot identify the app, path, page, or complete target. If a safe live crop is impossible, use a clean original freeze or rerecording rather than a low-quality Preview.
+
+Use [SCREEN_HYGIENE_QC_TEMPLATE.md](../templates/SCREEN_HYGIENE_QC_TEMPLATE.md).

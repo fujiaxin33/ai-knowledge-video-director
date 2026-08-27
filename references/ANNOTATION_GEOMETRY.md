@@ -49,3 +49,5 @@ For every annotation, show:
 6. Start/end frame
 
 The gate passes only when target coverage, box alignment, semantic line count, label visibility, subtitle/face safety, frame timing, and visual/spoken agreement all pass. Run `validate_annotation_bounds.py`, `validate_layout_safe_zones.py`, and `make_annotation_review_sheet.py` before render.
+
+Treat annotations as high risk when they support a central teaching claim, identify an error/fix, move with a dynamic target, or accompany narration such as “complete screen/workspace.” High-risk annotations require both validator PASS and visual review. Numeric geometry cannot prove that a source crop contains pixels that were never captured; the full-context frame must visibly support any completeness claim before focus/annotation is approved.

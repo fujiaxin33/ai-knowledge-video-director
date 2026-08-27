@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.1",
+  "sources": ["test_script.md", "verified_tool_asset.svg"],
+  "terms": {
+    "NimbusFlow": ["nimbus flow", "Nimbus Flow", "nimbasflow"]
+  }
+}

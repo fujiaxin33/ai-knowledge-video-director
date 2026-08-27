@@ -34,6 +34,8 @@ Every important motion defines:
 - After two, prefer real Screen, Freeze Evidence, Presenter, demo, comparison, or a real result.
 - Use card reveal, reorder, link build, highlight, focus, result lock, and PIP change to explain—not merely decorate.
 
+Run a rolling 10-second visual-type audit before First Cut approval. Mark `PPT_RISK` when a window contains only Concept Card / Static Motion Page and no Presenter, Real Screen, Freeze Evidence, Real Case, Compare, or meaningful real result. This is a warning for semantic review, not a quota requiring equal visual percentages. Use `scripts/detect_ppt_risk.py` when a beat manifest is available.
+
 ## Independent asset contract
 
 - Motion files remain independent of Talking Head and Screen.
