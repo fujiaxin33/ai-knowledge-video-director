@@ -34,6 +34,16 @@ Transcript + Audio Review
 
 Semantic cleanup removes failed starts, word repeats, sentence restarts, meaning duplicates, half-sentence NGs, and non-teaching pauses while preserving natural breathing, emphasis, and human cadence. Do not use silence detection alone.
 
+For whiteboard storytelling, classify meaningful gaps before trimming:
+
+- `NG_PAUSE`: accidental search/restart; remove or compress.
+- `COMEDY_PAUSE`: setup-to-punch timing; preserve unless a human directs otherwise.
+- `REVEAL_PAUSE`: space for a visual completion; preserve.
+- `REACTION_PAUSE`: lets character/audience reaction land; preserve.
+- `KNOWLEDGE_HOLD`: lets the core idea read; preserve.
+
+Do not globally accelerate whiteboard narration. Remove repeats/NGs and non-teaching gaps first; use only local light speed changes when cadence remains natural.
+
 Record source take, in/out, retained meaning, and removal reason. Check every cut by listening; short audio fades may prevent clicks but must not hide a word-boundary error. If approved speech changes after lock, reopen subtitles, screen timing, motion, SFX, and frame-boundary review instead of leaving the old timeline in place.
 
 Use [CLEAN_AROLL_LOCK_TEMPLATE.md](../templates/CLEAN_AROLL_LOCK_TEMPLATE.md).

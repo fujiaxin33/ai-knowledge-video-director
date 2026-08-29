@@ -8,6 +8,7 @@
 - Viewer state after:
 - Single teaching promise:
 - Target duration / aspect ratio / fps:
+- Mode: STANDARD / WHITEBOARD_STORYTELLING
 
 ## Truth Sources
 
@@ -28,7 +29,7 @@
 
 ## Content Type
 
-- Format: quick knowledge / software demo / course
+- Format: quick knowledge / software demo / course / whiteboard storytelling
 - Primary visual evidence:
 - Presenter role: hook / transition / ending / PIP / hidden
 - Editor route: Local Baseline / ChatCut Timeline / hybrid
@@ -43,3 +44,4 @@
 - [ ] Clean A-roll locks before visual/motion timing.
 - [ ] Canonical terminology and product identity plans are defined.
 - [ ] Screen Hygiene and rolling PPT-risk audits are defined.
+- [ ] If Whiteboard mode is selected, story shell, draw levels, Hand contract, character/comedy beats, Knowledge Hero, SFX and human gates are defined.

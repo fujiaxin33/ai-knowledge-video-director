@@ -31,7 +31,8 @@ def load_beats(path: Path) -> list[dict]:
             raise ValueError(f"invalid beat at index {index}: {exc}") from exc
         if end <= start:
             raise ValueError(f"beat {index} must have end > start")
-        parsed.append({"start": start, "end": end, "visual_type": visual_type, "id": beat.get("id", index)})
+        parsed.append({**beat, "start": start, "end": end, "visual_type": visual_type,
+                       "id": beat.get("id", index)})
     return parsed
 
 
@@ -59,6 +60,45 @@ def detect(beats: list[dict], window: float, step: float, concept_types: set[str
     return merged
 
 
+def score_beats(beats: list[dict], concept_types: set[str]) -> list[dict]:
+    """Score structured PPT/UI dimensions without pretending to judge semantics."""
+    scored = []
+    for beat in beats:
+        if bool(beat.get("knowledge_hero")):
+            score = 0
+            reasons = ["intentional Knowledge Hero static exception"]
+        else:
+            score, reasons = 0, []
+            duration = beat["end"] - beat["start"]
+            static_duration = float(beat.get("static_duration", duration if beat.get("static") else 0.0))
+            if static_duration >= 3.0:
+                score += 2
+                reasons.append("static duration >= 3s")
+            if beat.get("complete_information_single_frame"):
+                score += 2
+                reasons.append("single frame carries complete beat")
+            if beat.get("character_action") is False:
+                score += 1
+                reasons.append("no character action")
+            if beat.get("progressive_build") is False:
+                score += 1
+                reasons.append("no progressive build")
+            if beat.get("repeated_card_layout"):
+                score += 2
+                reasons.append("repeated card layout")
+            if beat.get("ui_like_structure"):
+                score += 2
+                reasons.append("UI-like structure")
+            if beat["visual_type"] in concept_types and not any(
+                beat.get(key) for key in ("character_action", "progressive_build", "meaningful_reaction")
+            ):
+                score += 1
+                reasons.append("static concept visual type")
+        level = "LOW" if score <= 2 else ("MEDIUM" if score <= 5 else "HIGH")
+        scored.append({"id": beat["id"], "score": score, "level": level, "reasons": reasons})
+    return scored
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("manifest", type=Path)
@@ -73,14 +113,19 @@ def main() -> int:
         beats = load_beats(args.manifest)
         concept_types = {norm(v) for v in (args.concept_types or DEFAULT_CONCEPT_TYPES)}
         risks = detect(beats, args.window, args.step, concept_types)
+        beat_scores = score_beats(beats, concept_types)
+        levels = {item["level"] for item in beat_scores}
+        risk_level = "HIGH" if risks or "HIGH" in levels else ("MEDIUM" if "MEDIUM" in levels else "LOW")
         result = {
-            "pass": not risks,
+            "pass": not risks and risk_level != "HIGH",
             "manifest": str(args.manifest),
             "window_seconds": args.window,
             "step_seconds": args.step,
             "risk_count": len(risks),
             "risks": risks,
-            "note": "PPT_RISK requires semantic review; visual types are not an equal-ratio quota.",
+            "risk_level": risk_level,
+            "beat_scores": beat_scores,
+            "note": "PPT_RISK requires semantic review; structured scores are candidates, not an aesthetic verdict or equal-ratio quota.",
         }
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         result = {"pass": False, "errors": [str(exc)], "risks": []}
@@ -92,7 +137,7 @@ def main() -> int:
         args.report.write_text(output + "\n", encoding="utf-8")
     if result.get("errors"):
         return 2
-    return 1 if args.fail_on_risk and result.get("risks") else 0
+    return 1 if args.fail_on_risk and not result.get("pass") else 0
 
 
 if __name__ == "__main__":

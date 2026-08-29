@@ -1,0 +1,8 @@
+{
+  "mode": "STANDARD",
+  "request_type": "desktop_tutorial",
+  "primary_carrier": "Original Screen",
+  "screen_grammar": ["Live", "Freeze", "Explain", "Continue"],
+  "whiteboard_forced": false,
+  "annotation_geometry": "final_canvas_integer_pixels"
+}

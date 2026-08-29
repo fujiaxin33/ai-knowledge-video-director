@@ -1,0 +1,16 @@
+{
+  "topic": "海边为什么容易起风",
+  "mode": "WHITEBOARD_STORYTELLING",
+  "story_shell": "一只风筝在海岸线寻找是谁在推它",
+  "series_identity": ["whiteboard", "Hand", "progressive drawing", "character reaction", "knowledge lock"],
+  "progressive_scene": [
+    "Hand draws shoreline and sun",
+    "warm-air arrows rise from land",
+    "cool-air arrows move in from sea",
+    "kite reacts and the circulation closes"
+  ],
+  "character_arc": ["calm", "mystery", "wrong guess", "wind push", "understanding"],
+  "knowledge_hero": "冷热差 → 空气流动",
+  "uses_repeated_cards": false,
+  "uses_complete_png_sequence": false
+}

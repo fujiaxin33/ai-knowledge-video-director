@@ -1,0 +1,13 @@
+{
+  "beats": [
+    {"id": "ACTION-1", "start": 0, "end": 4, "visual_type": "Whiteboard Story", "static": false,
+     "complete_information_single_frame": false, "character_action": true, "progressive_build": true,
+     "repeated_card_layout": false, "ui_like_structure": false, "meaningful_reaction": true},
+    {"id": "ACTION-2", "start": 4, "end": 8, "visual_type": "Whiteboard Story", "static": false,
+     "complete_information_single_frame": false, "character_action": true, "progressive_build": true,
+     "repeated_card_layout": false, "ui_like_structure": false, "meaningful_reaction": true},
+    {"id": "HERO", "start": 8, "end": 9.2, "visual_type": "Concept Motion", "static": true,
+     "knowledge_hero": true, "complete_information_single_frame": true, "character_action": false,
+     "progressive_build": false, "repeated_card_layout": false, "ui_like_structure": false}
+  ]
+}

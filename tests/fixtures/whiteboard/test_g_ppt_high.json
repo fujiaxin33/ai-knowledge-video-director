@@ -1,0 +1,10 @@
+{
+  "beats": [
+    {"id": "CARD-1", "start": 0, "end": 6, "visual_type": "Concept Card", "static": true,
+     "complete_information_single_frame": true, "character_action": false, "progressive_build": false,
+     "repeated_card_layout": true, "ui_like_structure": true},
+    {"id": "CARD-2", "start": 6, "end": 12, "visual_type": "Static Motion Page", "static": true,
+     "complete_information_single_frame": true, "character_action": false, "progressive_build": false,
+     "repeated_card_layout": true, "ui_like_structure": true}
+  ]
+}

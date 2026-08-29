@@ -1,0 +1,11 @@
+{
+  "canvas": {"width": 1920, "height": 1080, "fps": 30},
+  "safe_zones": [],
+  "annotations": [{
+    "id": "GOOD-BOX", "start_frame": 10, "end_frame": 40, "kind": "box",
+    "target": {"x": 500, "y": 200, "width": 400, "height": 240},
+    "annotation": {"x": 488, "y": 188, "width": 424, "height": 264},
+    "padding": 12, "semantic_target": "complete result panel",
+    "why_now": "the voice names this result", "avoid_safe_zones": []
+  }]
+}

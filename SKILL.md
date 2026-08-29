@@ -1,8 +1,8 @@
 ---
 name: ai-knowledge-video-director
-description: Direct, plan, edit, and audit AI knowledge videos and real software tutorials, including Prompt, Codex, Obsidian, ChatGPT, GitHub Skill, screen-recording, teaching-motion, annotation, subtitle, audio, ChatCut, HyperFrames, and Remotion workflows. Use for horizontal courses or vertical knowledge videos; do not use for unrelated vlogs, fiction, music edits, entertainment montages, or effects-led films.
+description: Direct, plan, edit, and audit AI knowledge videos, real software tutorials, and whiteboard storytelling/comedy explainers, including Prompt, Codex, Obsidian, ChatGPT, GitHub Skill, screen recording, progressive drawing, teaching motion, annotation, captions, audio, ChatCut, HyperFrames, Remotion, and final QC. Use for horizontal or vertical knowledge teaching; do not use for unrelated vlogs, fiction, music edits, entertainment montages, or effects-led films.
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
 ---
 
 # AI Knowledge Video Director
@@ -13,13 +13,14 @@ Turn an approved teaching idea and original media into a readable, evidence-led 
 
 1. Read the script, asset inventory, references, and any project `DESIGN.md` / editing rules.
 2. Build project-specific canonical terminology and product identity plans with [TERMINOLOGY_AND_PRODUCT_IDENTITY.md](references/TERMINOLOGY_AND_PRODUCT_IDENTITY.md).
-3. Classify the content level and canvas with [CONTENT_AND_FORMAT_ROUTER.md](references/CONTENT_AND_FORMAT_ROUTER.md), then choose a small stable layout family with [LAYOUT_SYSTEM.md](references/LAYOUT_SYSTEM.md).
-4. Produce the Phase B documents from `templates/` before editing.
-5. Audit original takes and screens with [TAKE_AND_MEDIA_SELECTION.md](references/TAKE_AND_MEDIA_SELECTION.md), then lock a semantically clean A-roll before visual/motion timing.
-6. Route each visual beat to Human, Original Screen, HyperFrames, Remotion, or `NO EFFECT`; one main carrier per beat. Use [ASSET_AND_EVIDENCE.md](references/ASSET_AND_EVIDENCE.md) for real evidence and motherboard-derived assets.
-7. For software teaching, read [SCREEN_DIRECTING.md](references/SCREEN_DIRECTING.md). For any box, line, label, arrow, or marker, also read [ANNOTATION_GEOMETRY.md](references/ANNOTATION_GEOMETRY.md).
-8. Before rendering, generate the timeline contact sheet, annotation manifest/review sheet, motion hero frames, screen-focus review, Screen Hygiene QC, and visual-variety/PPT-risk audit. Do not render while a review gate fails.
-9. Build an editable multi-track timeline where available; validate final subtitles against canonical terms, then run [EXPORT_AND_QC.md](references/EXPORT_AND_QC.md) before delivery.
+3. Classify the content level, canvas, and mode with [CONTENT_AND_FORMAT_ROUTER.md](references/CONTENT_AND_FORMAT_ROUTER.md). Keep `STANDARD` for screen demos, product walkthroughs, desktop tutorials, talking head, and evidence-led courses. Select `WHITEBOARD_STORYTELLING` only when story, hand drawing, progressive scene growth, character action, or whiteboard comedy is part of the intended teaching form.
+4. For `WHITEBOARD_STORYTELLING`, read [WHITEBOARD_STORYTELLING.md](references/WHITEBOARD_STORYTELLING.md), [WHITEBOARD_QC.md](references/WHITEBOARD_QC.md), and [WHITEBOARD_FAILURE_PATTERNS.md](references/WHITEBOARD_FAILURE_PATTERNS.md). Otherwise use the Standard layout and screen references without importing whiteboard-only rules.
+5. Produce the Phase B documents from `templates/` before editing.
+6. Audit original takes and screens with [TAKE_AND_MEDIA_SELECTION.md](references/TAKE_AND_MEDIA_SELECTION.md), then lock a semantically clean A-roll before visual/motion timing.
+7. Route each visual beat to Human, Original Screen, HyperFrames, Remotion, programmatic whiteboard, or `NO EFFECT`; one main carrier per beat. Use [ASSET_AND_EVIDENCE.md](references/ASSET_AND_EVIDENCE.md) for real evidence and motherboard-derived assets.
+8. For software teaching, read [SCREEN_DIRECTING.md](references/SCREEN_DIRECTING.md). For any box, line, label, arrow, or marker, also read [ANNOTATION_GEOMETRY.md](references/ANNOTATION_GEOMETRY.md).
+9. Before rendering, generate the mode-required manifests, contact sheets, hero frames, and QC reviews. Do not render while a review gate fails.
+10. Build an editable multi-track timeline where available; validate final subtitles against canonical terms, then run [EXPORT_AND_QC.md](references/EXPORT_AND_QC.md) before delivery.
 
 ## Required phases
 
@@ -42,6 +43,8 @@ Create:
 - `ASSET_GAP.md`
 - `CANONICAL_TERMS.json`
 - `PRODUCT_IDENTITY_PLAN.md`
+
+For `WHITEBOARD_STORYTELLING`, also create a Whiteboard Plan that records story shell, character arc, comedy punches, draw levels, Hand/reveal contracts, voice anchors, SFX events, captions, Knowledge Hero, and human review gates. Use [WHITEBOARD_PLAN_TEMPLATE.md](templates/WHITEBOARD_PLAN_TEMPLATE.md).
 
 Every key sentence maps to one current visual beat. The next concept must not enter early, and old evidence must not remain after its spoken point ends.
 
@@ -105,13 +108,17 @@ Run annotation, safe-zone, flash-frame, contact-sheet, ffprobe, decode, black-fr
 - Long Prompt/output is brief evidence, then becomes summary, comparison, or concept motion.
 - Motion copy compresses speech; it is not a second subtitle.
 - Important motion has `Start -> Change -> End`; build quickly and hold the complete result.
-- No more than two consecutive pure concept pages before real evidence, Presenter, or a meaningful screen state.
-- A rolling 10-second concept-only stretch is a `PPT_RISK` warning; fix according to semantics, not an equal-ratio quota.
+- In `STANDARD`, no more than two consecutive pure concept pages should appear before real evidence, Presenter, or a meaningful screen state. A progressively built whiteboard scene with character action is not a pure concept page.
+- Score rolling 10-second `PPT_RISK` windows by mode. In `WHITEBOARD_STORYTELLING`, progressive build, character action/reaction, and an intentional Knowledge Hero hold are valid exceptions; repeated complete cards and UI-like panels are not.
 - Subtitles are stable one or two lines; no karaoke, word-by-word color, bounce, or competition with motion.
 - Validate subtitle/project copy against the project-specific canonical terminology dictionary.
 - Use verified real logos only at meaningful identity moments; do not fabricate or keep them persistently floating.
 - Original voice is preferred. If the processing chain changes materially, provide a five-second Raw/Processed comparison before applying it broadly.
 - SFX follows the impact frame, stays below speech, and is not added to every card.
+- In `WHITEBOARD_STORYTELLING`, draw before show whenever an object can reasonably be established by drawing. Hand tip and stroke/mask reveal front must agree; a nearby moving Hand plus independent fade-in is `FAKE_HANDWRITING` and fails the gate.
+- Whiteboard scenes should grow through actions and relationships on a full canvas. Do not replace every sentence with a new slide, make captions the primary visual, or introduce generic product UI unless the story requires real UI.
+- Whiteboard comedy uses `Setup → Anticipation → Pause → Impact → Reaction`; preserve reaction and intentional comedy/reveal/knowledge pauses during speech cleanup.
+- Whiteboard final approval always retains a human gate for hook, story, comedy, draw naturalness, voice/visual meaning, character taste, SFX and ending.
 - Do not call paid generation or external upload without authorization.
 
 ## Conditional references
@@ -127,6 +134,9 @@ Run annotation, safe-zone, flash-frame, contact-sheet, ffprobe, decode, black-fr
 - Original lineage, Master Take, B-roll: [TAKE_AND_MEDIA_SELECTION.md](references/TAKE_AND_MEDIA_SELECTION.md)
 - Codec, bitrate, flash/black frames, QC evidence: [EXPORT_AND_QC.md](references/EXPORT_AND_QC.md)
 - Known anti-patterns: [FAILURE_PATTERNS.md](references/FAILURE_PATTERNS.md)
+- Whiteboard mode, Draw Before Show, scene growth, character/comedy grammar: [WHITEBOARD_STORYTELLING.md](references/WHITEBOARD_STORYTELLING.md)
+- Whiteboard manifests, validators, automated limits and human gates: [WHITEBOARD_QC.md](references/WHITEBOARD_QC.md)
+- Whiteboard-specific failure diagnosis: [WHITEBOARD_FAILURE_PATTERNS.md](references/WHITEBOARD_FAILURE_PATTERNS.md)
 
 ## Learning boundary
 

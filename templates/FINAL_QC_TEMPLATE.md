@@ -32,6 +32,17 @@
 - [ ] Rolling 10-second visual-type audit has no unresolved `PPT_RISK`.
 - [ ] Motherboard-derived assets pass background-leakage/alpha review.
 
+## Whiteboard Mode (when selected)
+
+- [ ] Objects draw/build before showing unless an intentional punch justifies an instant reveal.
+- [ ] Hand tip follows the active stroke or mask front; drawing audio exists only while pen is down.
+- [ ] The scene grows through actions and relationships instead of repeated complete cards or generic UI.
+- [ ] Character pose swaps retain anchor, scale, silhouette, readable text, and one temporal state.
+- [ ] Comedy preserves Setup → Anticipation → Pause → Impact → Reaction.
+- [ ] Voice, visual completion, SFX hit, and semantic single-line caption align.
+- [ ] Knowledge Hero has a clean final hold without competing elements.
+- [ ] Human review approves hook, story, comedy, drawing naturalness, character taste, SFX and ending.
+
 ## Technical
 
 - [ ] ffprobe quality check passes.

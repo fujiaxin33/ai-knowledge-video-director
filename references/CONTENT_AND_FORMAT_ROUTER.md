@@ -24,12 +24,24 @@ Use for software teaching, long Prompt/output, tables, GitHub, Obsidian, Codex, 
 
 ## Preset selection
 
+### Mode first
+
+Choose one primary mode before selecting a visual preset:
+
+| Mode | Select when | Do not force when |
+| --- | --- | --- |
+| `STANDARD` | desktop tutorial, software operation, product walkthrough, real-screen evidence, talking head, course, or ordinary knowledge direction | the user explicitly wants a drawn story world |
+| `WHITEBOARD_STORYTELLING` | knowledge is taught through a story shell, Hand drawing, progressive scene construction, character action/reaction, visual comedy, or a whiteboard explainer | the task depends on reading or proving real software UI |
+
+If the user says only “knowledge video,” choose the mode that best serves the learning outcome and evidence. Recommend or ask when both are plausible; do not silently apply whiteboard rules to a screen demo.
+
 1. If a project `DESIGN.md` exists, its brand tokens win.
 2. Use `Editorial Brand` when the brand is warm, restrained, and explanatory.
 3. Use `Presenter Motion UI` only when the reference intent is information-stage rhythm and presenter/content integration.
 4. Use `Dark Motion UI` only when explicitly requested or clearly supported by the brand.
 5. A reference contributes layout, density, state progression, Presenter relation, subtitle rhythm, and SFX rhythm—not copied logos, copy, colors, or signature components.
+6. `WHITEBOARD_STORYTELLING` uses the full-canvas and draw system in [WHITEBOARD_STORYTELLING.md](WHITEBOARD_STORYTELLING.md), not Presenter Motion UI cards.
 
 ## Required classification output
 
-Record: level, canvas, audience, learning outcome, target duration, primary evidence, selected preset, and one-sentence rationale.
+Record: mode, level, canvas, audience, learning outcome, target duration, primary evidence, selected preset, and one-sentence rationale.

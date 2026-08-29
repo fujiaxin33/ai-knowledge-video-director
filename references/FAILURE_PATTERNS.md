@@ -35,3 +35,5 @@
 | Any rolling 10s is concept-only | Motion still reads as slides | Mark PPT_RISK and add semantically relevant evidence/state |
 
 Do not add a failure to this library from one project-specific preference. Promote only repeated or clearly transferable failures after user confirmation.
+
+For whiteboard-specific failures, detection and fixes, read [WHITEBOARD_FAILURE_PATTERNS.md](WHITEBOARD_FAILURE_PATTERNS.md).

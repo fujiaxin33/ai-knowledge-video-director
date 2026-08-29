@@ -36,6 +36,8 @@ Every important motion defines:
 
 Run a rolling 10-second visual-type audit before First Cut approval. Mark `PPT_RISK` when a window contains only Concept Card / Static Motion Page and no Presenter, Real Screen, Freeze Evidence, Real Case, Compare, or meaningful real result. This is a warning for semantic review, not a quota requiring equal visual percentages. Use `scripts/detect_ppt_risk.py` when a beat manifest is available.
 
+For `WHITEBOARD_STORYTELLING`, a persistent scene with progressive drawing, character action/reaction, physical interaction, or accumulating relationships is not a pure concept page. Evaluate whether meaning depends on time change. An intentional Knowledge Hero hold is an allowed static exception.
+
 ## Independent asset contract
 
 - Motion files remain independent of Talking Head and Screen.

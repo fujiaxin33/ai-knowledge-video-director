@@ -1,0 +1,11 @@
+{
+  "canvas": {"width": 1920, "height": 1080},
+  "safe_zone": {"x": 96, "y": 930, "width": 1728, "height": 110},
+  "recommended_characters": 16,
+  "hard_limit_characters": 22,
+  "voice": "当空气里的水蒸气遇到更冷的表面，就会凝结成我们看到的小水滴。",
+  "captions": [{
+    "id": "H1", "start": 0.0, "end": 3.2, "text": "遇冷，水汽变水滴", "line_count": 1,
+    "semantic": true, "x": 600, "y": 950, "width": 720, "height": 70
+  }]
+}

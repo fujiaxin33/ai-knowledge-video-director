@@ -14,6 +14,10 @@ Yellow/white text on a restrained translucent dark rounded background, stable pl
 
 Always prohibit karaoke, word-by-word highlight/color, bounce, and captions that compete with motion. Do not repeat an Overlay sentence verbatim. Protect the face, platform interaction region, current annotation target, and software text.
 
+### Whiteboard Storytelling
+
+Default to a semantic single-line caption, usually 6–16 Chinese characters and approximately 20–22 as a hard-length candidate. Compress meaning rather than shrinking the type. Visual priority is `Story > Character > Hand > Knowledge Word > Caption`; captions must not become the first visual center.
+
 ## Chunking
 
 Break by semantic phrase and natural pause. Merge tiny fragments that would flash. For fast knowledge video, keep each displayed line compact; for courses, prioritize readable phrases over arbitrary character quotas.
@@ -35,3 +39,4 @@ Before subtitle lock, validate product/tool/model/repository/Skill names against
 - About 1–3 meaningful effects per 5–8s is an upper working range, not a quota.
 - Reuse sound families for repeated action families.
 - Use licensed/local known sources. If unavailable, write `SFX_REQUEST.md` with action, time, duration, suggested source, and payment status; do not call paid generation without approval.
+- In whiteboard mode, classify each cue as `DRAW`, `MOTION`, `IMPACT`, `COMEDY`, or `REVEAL` and bind it to a visible event. Draw sound follows pen-down velocity and stops at pen lift; impact sound lands on the impact frame.

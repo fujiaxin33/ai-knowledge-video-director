@@ -1,0 +1,10 @@
+{
+  "beats": [
+    {"id": "A", "voice_start": 0.0, "voice_end": 2.0, "visual_start": -0.1, "visual_end": 2.1,
+     "intended_meaning": "seed exists", "visual_event": "Hand draws seed", "keyword_start": 0.5, "keyword_end": 0.9, "reveal_time": 0.8, "next_voice_start": 2.2},
+    {"id": "B", "voice_start": 2.2, "voice_end": 4.2, "visual_start": 2.1, "visual_end": 4.3,
+     "intended_meaning": "sprout grows", "visual_event": "sprout grows from seed", "keyword_start": 2.8, "keyword_end": 3.3, "reveal_time": 3.2, "next_voice_start": 4.4},
+    {"id": "C", "voice_start": 4.4, "voice_end": 6.4, "visual_start": 4.3, "visual_end": 6.6,
+     "intended_meaning": "flower opens", "visual_event": "flower opens from sprout", "keyword_start": 5.0, "keyword_end": 5.6, "reveal_time": 5.5}
+  ]
+}

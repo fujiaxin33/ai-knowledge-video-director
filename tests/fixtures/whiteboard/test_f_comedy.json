@@ -1,0 +1,18 @@
+{
+  "punches": [{
+    "id": "CAT-WHISKER", "visual_situation": true,
+    "setup": {"start": 0.0, "end": 1.2}, "anticipation": {"start": 1.2, "end": 1.8},
+    "pause": {"start": 1.8, "end": 2.0}, "impact": {"start": 2.0, "end": 2.15},
+    "reaction": {"start": 2.15, "end": 3.0}, "knowledge_job": "whiskers compare opening width"
+  }],
+  "max_anchor_jump_px": 24,
+  "max_scale_jump": 0.06,
+  "characters": [{"id": "cat", "states": [
+    {"time": 0.0, "anchor_x": 420, "anchor_y": 760, "scale": 1.0, "visible_count": 1, "full_silhouette": true},
+    {"time": 2.15, "anchor_x": 425, "anchor_y": 758, "scale": 1.02, "visible_count": 1, "full_silhouette": true}
+  ]}],
+  "events": [
+    {"id": "impact", "type": "IMPACT", "impact_time": 2.0, "sfx_time": 2.033},
+    {"id": "whisker-draw", "type": "DRAW", "motion_start": 0.4, "motion_end": 1.1, "sfx_start": 0.42, "sfx_end": 1.08}
+  ]
+}

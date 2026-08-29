@@ -1,0 +1,29 @@
+{
+  "max_tip_distance": 30,
+  "scene_order": ["cup", "coffee", "steam", "drinker"],
+  "progressive_nested_scene": true,
+  "complete_image_sequence": false,
+  "sequences": [
+    {"id": "cup", "mode": "true_stroke", "start": 0.0, "end": 0.8, "samples": [
+      {"time": 0.0, "reveal": 0.0, "hand_present": true, "hand_tip": [100, 200], "reveal_front": [100, 200]},
+      {"time": 0.4, "reveal": 0.5, "hand_present": true, "hand_tip": [180, 260], "reveal_front": [178, 260]},
+      {"time": 0.8, "reveal": 1.0, "hand_present": false, "hand_tip": [220, 200], "reveal_front": [220, 200]}
+    ]},
+    {"id": "coffee", "mode": "progressive_mask", "start": 0.8, "end": 1.4, "samples": [
+      {"time": 0.8, "reveal": 0.0, "hand_present": true, "hand_tip": [125, 225], "reveal_front": [125, 225]},
+      {"time": 1.1, "reveal": 0.55, "hand_present": true, "hand_tip": [175, 230], "reveal_front": [177, 230]},
+      {"time": 1.4, "reveal": 1.0, "hand_present": false, "hand_tip": [210, 235], "reveal_front": [210, 235]}
+    ]},
+    {"id": "steam", "mode": "true_stroke", "start": 1.4, "end": 2.0, "samples": [
+      {"time": 1.4, "reveal": 0.0, "hand_present": true, "hand_tip": [150, 190], "reveal_front": [150, 190]},
+      {"time": 1.7, "reveal": 0.5, "hand_present": true, "hand_tip": [155, 145], "reveal_front": [155, 145]},
+      {"time": 2.0, "reveal": 1.0, "hand_present": false, "hand_tip": [160, 110], "reveal_front": [160, 110]}
+    ]},
+    {"id": "drinker", "mode": "assembly_build", "start": 2.0, "end": 3.2, "samples": [
+      {"time": 2.0, "reveal": 0.0, "hand_present": true, "hand_tip": [350, 160], "reveal_front": [350, 160]},
+      {"time": 2.5, "reveal": 0.45, "hand_present": true, "hand_tip": [370, 230], "reveal_front": [368, 230]},
+      {"time": 2.9, "reveal": 0.8, "hand_present": true, "hand_tip": [390, 300], "reveal_front": [390, 300]},
+      {"time": 3.2, "reveal": 1.0, "hand_present": false, "hand_tip": [410, 320], "reveal_front": [410, 320]}
+    ]}
+  ]
+}
