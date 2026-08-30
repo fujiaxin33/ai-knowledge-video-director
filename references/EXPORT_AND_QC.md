@@ -1,5 +1,11 @@
 # Export and QC
 
+## Final listening release gate
+
+After the final export, listen from first frame to last frame to the actual master. Do not substitute transcript review, ASR confidence, waveform scanning, or segment spot checks. Confirm no word/phrase repeat, restart, failed start, self-correction pair, bad-take/good-take pair, meaning duplicate, or broken ending; approved sections are present; local speed sounds natural; captions/anchors/SFX align; removed objects have no orphan SFX; and voice/picture agree on facts, counts, names, terms, brands, polarity, and relations.
+
+Record reviewer, date, full duration heard, unresolved issues, and PASS/STOP. A technical export PASS cannot override this gate.
+
 ## Default delivery
 
 - Target canvas: project requirement, commonly 1920×1080 or 1080×1920.

@@ -1,5 +1,18 @@
 # Failure Patterns
 
+## v1.3 production failures
+
+- **ASR says clean, ear hears restart** — Re-audit original audio at clause boundaries; retain only the intended delivery.
+- **Approved ending shortened away** — Restore semantic section coverage before any timing work.
+- **Beautiful but static** — A high-quality image still needs entry, action, reaction, and exit.
+- **Meme PPT** — Cultural assets are present but no event occurs. Redirect as setup/action/impact/reaction.
+- **Page-turn whiteboard** — Full canvas repeatedly clears and the next complete composition appears. Carry residue, transform an object, or follow the Hand.
+- **Fake Hand** — Hand moves near an independent fade/reveal. Bind tip to the reveal front.
+- **Caption becomes presenter** — Shrink/reroute caption and enlarge the primary action.
+- **Visual contradicts voice** — Compare structured facts, counts, terms, polarity, and relations before render.
+- **Callback reteaches** — Retain the recognizable actor and a few rapid evidence actions, then exit.
+- **SFX wallpaper** — Remove continuous texture and keep event-based sounds below voice.
+
 | Failure | Why it fails | Default correction |
 | --- | --- | --- |
 | Person remains large through teaching | Content becomes secondary | Fixed 14%–18% PIP or hide Presenter |

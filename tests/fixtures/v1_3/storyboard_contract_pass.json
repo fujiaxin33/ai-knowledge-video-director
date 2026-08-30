@@ -1,0 +1,29 @@
+{
+  "layers": ["INTERNET_NATIVE_STORYTELLING", "LIVE_DRAWING_STORYTELLING"],
+  "speech_locked": true,
+  "real_meme_insert": {"enabled": false},
+  "require_v1_3_gate": true,
+  "pre_render_gate": {
+    "hero_keyframes_approved": true,
+    "hero_keyframe_count": 8,
+    "human_approved": true,
+    "human_review": {"comedy": true, "internet_naturalness": true, "taste": true, "character_expression": true, "cultural_recognition": true, "release": true},
+    "render_budget": {"full_renders_used": 2}
+  },
+  "sfx_events": [{"id": "impact", "continuous_bed": false, "orphaned": false, "voice_priority": true}],
+  "beats": [
+    {
+      "id": "PUNCH", "entry": "outline grows", "action": "character searches", "action_type": "search", "impact": "unexpected answer", "reaction": "character freezes", "hold": "0.5s reaction", "exit": "erase",
+      "entry_method": "mask draw", "uses_complete_asset": true, "high_quality_asset": true, "final_quality_preserved": true,
+      "is_punch": true, "setup": "question", "knowledge_purpose": "show ambiguity", "primary_scale_ratio": 0.58,
+      "live_drawing": true, "spoken_cue": "find the recent one", "hand_actor_action": "searches and points", "transition": "last circle becomes lens",
+      "becoming_stages": ["outline", "subject", "expression"], "hand_tip_sync": true, "anticipatory_empty_space": true, "empty_space_ratio": 0.70, "hand_entry_delay": 1.0, "static_wait_duration": 0.0,
+      "reveal_continues_after_hand_stop": false, "knowledge_residue_reason": "lens bridges to search"
+    },
+    {
+      "id": "CALLBACK", "entry": "character peeks in", "action": "collects evidence", "action_type": "enter", "impact": "third item lands", "reaction": "nod", "hold": "brief recognition", "exit": "exit",
+      "entry_method": "assembly build", "uses_complete_asset": true, "high_quality_asset": true, "final_quality_preserved": true,
+      "primary_scale_ratio": 0.45, "callback": true, "duration": 4.0, "callback_limit": 5.0, "caption_primary": false
+    }
+  ]
+}

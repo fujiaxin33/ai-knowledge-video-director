@@ -1,0 +1,11 @@
+{
+  "cases": [
+    {"id": "A-desktop-tutorial", "real_screen_primary": true, "route": {"primary_mode": "STANDARD", "layers": []}},
+    {"id": "B-enterprise-formal", "formal_enterprise": true, "internet_language_requested": true, "route": {"primary_mode": "STANDARD", "layers": []}},
+    {"id": "C-consumer-whiteboard", "drawn_story_world": true, "cultural_punch_helpful": true, "route": {"primary_mode": "WHITEBOARD_STORYTELLING", "layers": ["INTERNET_NATIVE_STORYTELLING"]}},
+    {"id": "D-no-humor", "drawn_story_world": true, "cultural_punch_helpful": true, "no_humor": true, "route": {"primary_mode": "WHITEBOARD_STORYTELLING", "layers": []}},
+    {"id": "E-platform-meme", "drawn_story_world": true, "internet_language_requested": true, "route": {"primary_mode": "WHITEBOARD_STORYTELLING", "layers": ["INTERNET_NATIVE_STORYTELLING"]}},
+    {"id": "F-live-drawing", "drawn_story_world": true, "draw_while_talking": true, "route": {"primary_mode": "WHITEBOARD_STORYTELLING", "layers": ["LIVE_DRAWING_STORYTELLING"]}},
+    {"id": "G-composed", "drawn_story_world": true, "draw_while_talking": true, "cultural_punch_helpful": true, "route": {"primary_mode": "WHITEBOARD_STORYTELLING", "layers": ["INTERNET_NATIVE_STORYTELLING", "LIVE_DRAWING_STORYTELLING"]}}
+  ]
+}

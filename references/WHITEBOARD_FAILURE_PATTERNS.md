@@ -1,5 +1,14 @@
 # Whiteboard Failure Patterns
 
+## v1.3 additions
+
+- **Final state used as first state** — Storyboard keyframe is pasted whole into the timeline. Rebuild with an explicit Entry Method.
+- **Draw Before Show without Draw While Talking** — Object is drawn early and narration merely describes a finished board. Align becoming states to spoken cues.
+- **Hand as cursor** — Hand only follows paths. Give it a purposeful action: compare, hesitate, point, stamp, erase, move, or reveal.
+- **Knowledge residue becomes clutter** — Keep only relationships needed by the next beat; erase or transform the rest.
+- **Asset quality collapse** — Finished comedy art becomes a stick-figure/debug placeholder. Reveal the approved final asset progressively instead.
+- **Internet annotation system** — Multiple jokes become persistent labels. Limit to one brief annotation per beat.
+
 Each row defines symptom, reason, detection and correction. Automated checks only cover structured evidence; contact-sheet and playback review remain necessary.
 
 | Failure | Symptom | Why it fails | Detection | Fix |

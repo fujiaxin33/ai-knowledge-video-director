@@ -1,0 +1,508 @@
+{
+  "pass": true,
+  "test_count": 16,
+  "tests": [
+    {
+      "test": "A — Standard routing regression",
+      "expected": "desktop tutorial stays STANDARD with real screen grammar",
+      "actual": "mode=STANDARD, carrier=Original Screen, whiteboard_forced=False",
+      "status": "PASS",
+      "evidence": {
+        "screen_grammar": [
+          "Live",
+          "Freeze",
+          "Explain",
+          "Continue"
+        ]
+      }
+    },
+    {
+      "test": "B — Annotation precision regression",
+      "expected": "bad geometry fails and corrected geometry passes",
+      "actual": "bad_pass=False, corrected_pass=True",
+      "status": "PASS",
+      "evidence": {
+        "bad_error_count": 1,
+        "corrected_error_count": 0
+      }
+    },
+    {
+      "test": "C — Production regression",
+      "expected": "canonical bad/fixed, PPT bad/fixed, and annotation validators retain behavior",
+      "actual": "term issues 1→0; PPT HIGH→LOW; annotation=True",
+      "status": "PASS",
+      "evidence": {
+        "bad_term_issues": 1,
+        "fixed_term_issues": 0,
+        "bad_ppt_level": "HIGH",
+        "fixed_ppt_level": "LOW"
+      }
+    },
+    {
+      "test": "D — Draw Before Show",
+      "expected": "cup→coffee→steam→drinker builds progressively, not four complete images",
+      "actual": "sequence_count=4, progressive=True",
+      "status": "PASS",
+      "evidence": {
+        "scene_order": [
+          "cup",
+          "coffee",
+          "steam",
+          "drinker"
+        ],
+        "good_pass": true,
+        "fake_handwriting_rejected": true
+      }
+    },
+    {
+      "test": "E — Voice Visual",
+      "expected": "A/B/C reveals stay within their own voice/keyword spans",
+      "actual": "beat statuses=['PASS', 'PASS', 'PASS']",
+      "status": "PASS",
+      "evidence": {
+        "beat_count": 3,
+        "error_count": 0,
+        "late_reveal_rejected": true
+      }
+    },
+    {
+      "test": "F — Comedy",
+      "expected": "Setup→Anticipation→Pause→Impact→Reaction with anchored character and synced SFX",
+      "actual": "phases=['setup', 'anticipation', 'pause', 'impact', 'reaction'], anchor=True, sfx=True",
+      "status": "PASS",
+      "evidence": {
+        "knowledge_job": "whiskers compare opening width",
+        "sfx_statuses": [
+          "PASS",
+          "PASS"
+        ],
+        "anchor_jump_rejected": true,
+        "late_sfx_rejected": true
+      }
+    },
+    {
+      "test": "G — PPT Risk",
+      "expected": "card/UI plan scores HIGH; action plan LOW; Knowledge Hero remains LOW",
+      "actual": "card=HIGH, action=LOW, hero=LOW",
+      "status": "PASS",
+      "evidence": {
+        "high_scores": [
+          {
+            "id": "CARD-1",
+            "score": 11,
+            "level": "HIGH",
+            "reasons": [
+              "static duration >= 3s",
+              "single frame carries complete beat",
+              "no character action",
+              "no progressive build",
+              "repeated card layout",
+              "UI-like structure",
+              "static concept visual type"
+            ]
+          },
+          {
+            "id": "CARD-2",
+            "score": 11,
+            "level": "HIGH",
+            "reasons": [
+              "static duration >= 3s",
+              "single frame carries complete beat",
+              "no character action",
+              "no progressive build",
+              "repeated card layout",
+              "UI-like structure",
+              "static concept visual type"
+            ]
+          }
+        ],
+        "hero_reasons": [
+          "intentional Knowledge Hero static exception"
+        ]
+      }
+    },
+    {
+      "test": "H — Semantic Caption",
+      "expected": "long voice maps to a short, semantic, single-line caption",
+      "actual": "voice_chars=30, caption_chars=8, validator=True",
+      "status": "PASS",
+      "evidence": {
+        "caption": "遇冷，水汽变水滴",
+        "warning_count": 1,
+        "transcript_caption_rejected": true
+      }
+    },
+    {
+      "test": "I — Story Shell Generalization",
+      "expected": "new topic uses a new shell and the directing method, not EP story objects",
+      "actual": "topic=海边为什么容易起风, steps=4, banned_found=[]",
+      "status": "PASS",
+      "evidence": {
+        "story_shell": "一只风筝在海岸线寻找是谁在推它",
+        "knowledge_hero": "冷热差 → 空气流动"
+      }
+    },
+    {
+      "test": "J — Routing A–E + layers",
+      "expected": "Standard behavior remains; internet/live layers require explicit traits",
+      "actual": "cases=7, bad_route_rejected=True",
+      "status": "PASS",
+      "evidence": {
+        "cases": [
+          {
+            "id": "A-desktop-tutorial",
+            "expected_primary": "STANDARD",
+            "expected_layers": [],
+            "pass": true
+          },
+          {
+            "id": "B-enterprise-formal",
+            "expected_primary": "STANDARD",
+            "expected_layers": [],
+            "pass": true
+          },
+          {
+            "id": "C-consumer-whiteboard",
+            "expected_primary": "WHITEBOARD_STORYTELLING",
+            "expected_layers": [
+              "INTERNET_NATIVE_STORYTELLING"
+            ],
+            "pass": true
+          },
+          {
+            "id": "D-no-humor",
+            "expected_primary": "WHITEBOARD_STORYTELLING",
+            "expected_layers": [],
+            "pass": true
+          },
+          {
+            "id": "E-platform-meme",
+            "expected_primary": "WHITEBOARD_STORYTELLING",
+            "expected_layers": [
+              "INTERNET_NATIVE_STORYTELLING"
+            ],
+            "pass": true
+          },
+          {
+            "id": "F-live-drawing",
+            "expected_primary": "WHITEBOARD_STORYTELLING",
+            "expected_layers": [
+              "LIVE_DRAWING_STORYTELLING"
+            ],
+            "pass": true
+          },
+          {
+            "id": "G-composed",
+            "expected_primary": "WHITEBOARD_STORYTELLING",
+            "expected_layers": [
+              "INTERNET_NATIVE_STORYTELLING",
+              "LIVE_DRAWING_STORYTELLING"
+            ],
+            "pass": true
+          }
+        ]
+      }
+    },
+    {
+      "test": "K — Speech Lock and Final Listen",
+      "expected": "bad take, incomplete listen, and missing speed ripple fail",
+      "actual": "pass=True; negative_cases=3",
+      "status": "PASS",
+      "evidence": {
+        "bad_take_errors": [
+          "audit 0: bad/good take pair was not resolved at clause level"
+        ],
+        "listen_errors": [
+          "Clean A-roll was not listened to start-to-end"
+        ],
+        "speed_errors": [
+          "local speed did not regenerate timing maps: sfx"
+        ]
+      }
+    },
+    {
+      "test": "L — Voice/Visual Semantic Consistency",
+      "expected": "voice four vs visual five fails despite valid timing",
+      "actual": "good=True, mismatch_rejected=True",
+      "status": "PASS",
+      "evidence": {
+        "mismatch_errors": [
+          "A: semantic mismatch in counts"
+        ]
+      }
+    },
+    {
+      "test": "M — Storyboard/Live Contract",
+      "expected": "entry, lifecycle, page-turn, callback, meme, SFX, budget, Hand, space, and quality gates work",
+      "actual": "positive=True, rejected=14/14",
+      "status": "PASS",
+      "evidence": {
+        "negative_errors": {
+          "asset_entry": [
+            "PUNCH: complete asset lacks a supported entry method"
+          ],
+          "lifecycle_exit": [
+            "PUNCH: missing exit"
+          ],
+          "page_turn": [
+            "PAGE-4: five consecutive page-turn resets"
+          ],
+          "callback": [
+            "CALLBACK: callback exceeds declared duration limit"
+          ],
+          "real_meme": [
+            "real meme insert lacks explicit authorization, source/rights, or duration limit"
+          ],
+          "sfx": [
+            "SFX 0: continuous texture/noise bed is prohibited"
+          ],
+          "render_budget": [
+            "third full render requires reason and renewed authorization"
+          ],
+          "hand_actor": [
+            "PUNCH: live drawing missing hand_actor_action"
+          ],
+          "empty_space": [
+            "PUNCH: anticipatory empty space is not declared"
+          ],
+          "asset_quality": [
+            "PUNCH: high-quality final asset is not preserved"
+          ],
+          "speech_lock": [
+            "Storyboard/render gate cannot pass before A-roll LOCK"
+          ],
+          "hero_keyframes": [
+            "complex internet-native gate requires 6–10 hero keyframes"
+          ],
+          "human_review": [
+            "human review fields missing: taste"
+          ],
+          "action_density": [
+            "PUNCH: non-Hero beat lacks a meaningful action type"
+          ]
+        },
+        "reasoned_budget_warnings": [
+          "render budget exceeded with recorded reason and renewed authorization"
+        ]
+      }
+    },
+    {
+      "test": "N — Caption Scale and Hierarchy",
+      "expected": "subordinate caption passes; oversized caption fails",
+      "actual": "good=True, oversized_rejected=True",
+      "status": "PASS",
+      "evidence": {
+        "oversized_errors": [
+          "C1: caption box leaves the declared safe zone",
+          "C1: caption width ratio 0.781 exceeds limit"
+        ]
+      }
+    },
+    {
+      "test": "O — Live Drawing A–H / Static Asset",
+      "expected": "meaning becomes during voice; prebuilt start, stopped Hand, and static asset fail",
+      "actual": "live=True, start_fail=True, hand_fail=True, ppt=HIGH",
+      "status": "PASS",
+      "evidence": {
+        "start_errors": [
+          "cup: live-drawing final state is already present at the start"
+        ],
+        "hand_errors": [
+          "cup: sample 1: reveal continues after Hand stops"
+        ],
+        "ppt_scores": [
+          {
+            "id": "STATIC",
+            "score": 9,
+            "level": "HIGH",
+            "reasons": [
+              "static duration >= 3s",
+              "single frame carries complete beat",
+              "no character action",
+              "no progressive build",
+              "high-quality asset remains static",
+              "static concept visual type"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "test": "P — Exact v1.3 Case Matrix",
+      "expected": "Production 1–12 and Live Drawing A–H all match expected gates",
+      "actual": "cases=20, pass=True",
+      "status": "PASS",
+      "evidence": {
+        "cases": [
+          {
+            "case": "Production-1",
+            "expected": "unremoved failed clause fails",
+            "status": "PASS",
+            "evidence": [
+              "audit 0: bad/good take pair was not resolved at clause level"
+            ]
+          },
+          {
+            "case": "Production-2",
+            "expected": "missing approved ending fails",
+            "status": "PASS",
+            "evidence": [
+              "approved-script coverage missing: ending"
+            ]
+          },
+          {
+            "case": "Production-3",
+            "expected": "voice four vs visual five fails",
+            "status": "PASS",
+            "evidence": [
+              "COUNT: semantic mismatch in counts"
+            ]
+          },
+          {
+            "case": "Production-4",
+            "expected": "semantic object hierarchy may progressively build",
+            "status": "PASS",
+            "evidence": []
+          },
+          {
+            "case": "Production-5",
+            "expected": "independent examples pass only with reset",
+            "status": "PASS",
+            "evidence": [
+              "EXAMPLE-2: independent example lacks semantic reset"
+            ]
+          },
+          {
+            "case": "Production-6",
+            "expected": "asset-quality degradation fails",
+            "status": "PASS",
+            "evidence": [
+              "PUNCH: high-quality final asset is not preserved"
+            ]
+          },
+          {
+            "case": "Production-7",
+            "expected": "caption larger than primary visual fails",
+            "status": "PASS",
+            "evidence": [
+              "C1: caption area is not subordinate to the primary visual"
+            ]
+          },
+          {
+            "case": "Production-8",
+            "expected": "real meme OFF passes and unauthorized ON fails",
+            "status": "PASS",
+            "evidence": [
+              "real meme insert lacks explicit authorization, source/rights, or duration limit"
+            ]
+          },
+          {
+            "case": "Production-9",
+            "expected": "static high-quality comic is HIGH risk",
+            "status": "PASS",
+            "evidence": {
+              "id": "STATIC-COMIC",
+              "score": 11,
+              "level": "HIGH",
+              "reasons": [
+                "static duration >= 3s",
+                "same composition > 2.5s without meaningful action",
+                "single frame carries complete beat",
+                "no character action",
+                "no progressive build",
+                "high-quality asset remains static",
+                "static concept visual type"
+              ]
+            }
+          },
+          {
+            "case": "Production-10",
+            "expected": "callback beyond 6s fails",
+            "status": "PASS",
+            "evidence": [
+              "CALLBACK: callback exceeds declared duration limit"
+            ]
+          },
+          {
+            "case": "Production-11",
+            "expected": "punch without reaction fails",
+            "status": "PASS",
+            "evidence": [
+              "PUNCH: missing reaction",
+              "PUNCH: punch missing reaction"
+            ]
+          },
+          {
+            "case": "Production-12",
+            "expected": "ASR-only review with unresolved repeat fails",
+            "status": "PASS",
+            "evidence": [
+              "audit 2: unresolved semantic retake",
+              "Clean A-roll ASR/transcript-only review cannot pass"
+            ]
+          },
+          {
+            "case": "Live-A",
+            "expected": "Draw While Talking semantic chain passes",
+            "status": "PASS",
+            "evidence": []
+          },
+          {
+            "case": "Live-B",
+            "expected": "complete visual before voice fails",
+            "status": "PASS",
+            "evidence": [
+              "MOUNTAIN: live-drawing final state is already present at the start"
+            ]
+          },
+          {
+            "case": "Live-C",
+            "expected": "Hand and reveal on opposite sides fail",
+            "status": "PASS",
+            "evidence": [
+              "MOUNTAIN: sample 1: Hand/front distance 707.1px > 40.0px"
+            ]
+          },
+          {
+            "case": "Live-D",
+            "expected": "five Clear Canvas -> New Frame beats fail",
+            "status": "PASS",
+            "evidence": [
+              "PAGE-5: five consecutive page-turn resets"
+            ]
+          },
+          {
+            "case": "Live-E",
+            "expected": "70% empty space with imminent Hand passes",
+            "status": "PASS",
+            "evidence": []
+          },
+          {
+            "case": "Live-F",
+            "expected": "70% empty space with static character for 5s fails",
+            "status": "PASS",
+            "evidence": [
+              "PUNCH: large empty space is not anticipatory within 0.5–2.0s",
+              "PUNCH: large empty space holds a static character for 5s"
+            ]
+          },
+          {
+            "case": "Live-G",
+            "expected": "knowledge term emerging beside story passes",
+            "status": "PASS",
+            "evidence": []
+          },
+          {
+            "case": "Live-H",
+            "expected": "Hero Card for every point fails",
+            "status": "PASS",
+            "evidence": [
+              "every knowledge point is routed to a Hero Card"
+            ]
+          }
+        ],
+        "errors": []
+      }
+    }
+  ]
+}

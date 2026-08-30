@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run Standard regressions A-C and Whiteboard behavioral tests D-I."""
+"""Run Standard, Whiteboard, internet-native, production-gate, and live-drawing regressions."""
 
 from __future__ import annotations
 
@@ -169,6 +169,144 @@ def main() -> int:
     tests.append(result("I — Story Shell Generalization", "new topic uses a new shell and the directing method, not EP story objects",
                         f"topic={i_data['topic']}, steps={len(i_data['progressive_scene'])}, banned_found={found}", i_pass,
                         {"story_shell": i_data["story_shell"], "knowledge_hero": i_data["knowledge_hero"]}))
+
+    # J — Backward-compatible primary modes plus composable optional layers.
+    v13 = FIXTURES / "v1_3"
+    j_ok, j = cli("validate_content_routing.py", [v13 / "routing_cases.json"], 0)
+    j_bad = read(v13 / "routing_cases.json")
+    j_bad["cases"][0]["route"]["layers"] = ["INTERNET_NATIVE_STORYTELLING"]
+    j_bad_ok, j_bad_result = cli_data("validate_content_routing.py", j_bad, 1)
+    j_pass = j_ok and j_bad_ok and j.get("pass") and not j_bad_result.get("pass")
+    tests.append(result("J — Routing A–E + layers", "Standard behavior remains; internet/live layers require explicit traits",
+                        f"cases={len(j.get('cases', []))}, bad_route_rejected={not j_bad_result.get('pass')}", j_pass,
+                        {"cases": j.get("cases")}))
+
+    # K — Production cases 1, 2, 10, 12: semantic retakes, full listen, speed ripple, gate.
+    k_data = read(v13 / "final_listening_pass.json")
+    k_ok, k = cli_data("validate_final_listening.py", k_data, 0)
+    k_bad_take = json.loads(json.dumps(k_data))
+    k_bad_take["semantic_retake_audit"][0]["failed_clause_removed"] = False
+    k_bad_take_ok, k_bad_take_r = cli_data("validate_final_listening.py", k_bad_take, 1)
+    k_no_listen = json.loads(json.dumps(k_data))
+    k_no_listen["clean_aroll_listening"]["start_to_end"] = False
+    k_no_listen_ok, k_no_listen_r = cli_data("validate_final_listening.py", k_no_listen, 1)
+    k_bad_speed = json.loads(json.dumps(k_data))
+    k_bad_speed["local_speed_routing"]["timing_maps_regenerated"]["sfx"] = False
+    k_bad_speed_ok, k_bad_speed_r = cli_data("validate_final_listening.py", k_bad_speed, 1)
+    k_pass = all((k_ok, k_bad_take_ok, k_no_listen_ok, k_bad_speed_ok, k.get("pass"),
+                  not k_bad_take_r.get("pass"), not k_no_listen_r.get("pass"), not k_bad_speed_r.get("pass")))
+    tests.append(result("K — Speech Lock and Final Listen", "bad take, incomplete listen, and missing speed ripple fail",
+                        f"pass={k.get('pass')}; negative_cases=3", k_pass,
+                        {"bad_take_errors": k_bad_take_r.get("errors"), "listen_errors": k_no_listen_r.get("errors"),
+                         "speed_errors": k_bad_speed_r.get("errors")}))
+
+    # L — Production case 3: timing can pass while declared visual facts contradict voice.
+    l_data = read(FIXTURES / "whiteboard" / "test_e_voice_visual.json")
+    for beat in l_data["beats"]:
+        beat["voice_facts"] = {"counts": {"items": 4}}
+        beat["visual_facts"] = {"counts": {"items": 4}}
+    l_ok, l = cli_data("validate_voice_visual_alignment.py", l_data, 0)
+    l_bad = json.loads(json.dumps(l_data))
+    l_bad["beats"][0]["visual_facts"]["counts"]["items"] = 5
+    l_bad_ok, l_bad_r = cli_data("validate_voice_visual_alignment.py", l_bad, 1)
+    l_pass = l_ok and l_bad_ok and l.get("pass") and not l_bad_r.get("pass")
+    tests.append(result("L — Voice/Visual Semantic Consistency", "voice four vs visual five fails despite valid timing",
+                        f"good={l.get('pass')}, mismatch_rejected={not l_bad_r.get('pass')}", l_pass,
+                        {"mismatch_errors": l_bad_r.get("errors")}))
+
+    # M — Production cases 4–6, 8–9, 11–12 and live cases D–H.
+    m_data = read(v13 / "storyboard_contract_pass.json")
+    m_ok, m = cli_data("validate_storyboard_contract.py", m_data, 0)
+    negative_mutations = {}
+    bad_entry = json.loads(json.dumps(m_data)); bad_entry["beats"][0]["entry_method"] = ""
+    negative_mutations["asset_entry"] = bad_entry
+    bad_exit = json.loads(json.dumps(m_data)); bad_exit["beats"][0].pop("exit")
+    negative_mutations["lifecycle_exit"] = bad_exit
+    page_turn = json.loads(json.dumps(m_data)); page_turn["beats"] = [json.loads(json.dumps(m_data["beats"][0])) for _ in range(5)]
+    for idx, beat in enumerate(page_turn["beats"]): beat["id"], beat["page_turn_reset"] = f"PAGE-{idx}", True
+    negative_mutations["page_turn"] = page_turn
+    long_callback = json.loads(json.dumps(m_data)); long_callback["beats"][1]["duration"] = 9.0
+    negative_mutations["callback"] = long_callback
+    meme = json.loads(json.dumps(m_data)); meme["real_meme_insert"] = {"enabled": True}
+    negative_mutations["real_meme"] = meme
+    sfx = json.loads(json.dumps(m_data)); sfx["sfx_events"][0]["continuous_bed"] = True
+    negative_mutations["sfx"] = sfx
+    budget = json.loads(json.dumps(m_data)); budget["pre_render_gate"]["render_budget"]["full_renders_used"] = 3
+    negative_mutations["render_budget"] = budget
+    no_actor = json.loads(json.dumps(m_data)); no_actor["beats"][0]["hand_actor_action"] = ""
+    negative_mutations["hand_actor"] = no_actor
+    no_space = json.loads(json.dumps(m_data)); no_space["beats"][0]["anticipatory_empty_space"] = False
+    negative_mutations["empty_space"] = no_space
+    quality = json.loads(json.dumps(m_data)); quality["beats"][0]["final_quality_preserved"] = False
+    negative_mutations["asset_quality"] = quality
+    unlocked = json.loads(json.dumps(m_data)); unlocked["speech_locked"] = False
+    negative_mutations["speech_lock"] = unlocked
+    keyframes = json.loads(json.dumps(m_data)); keyframes["pre_render_gate"]["hero_keyframe_count"] = 4
+    negative_mutations["hero_keyframes"] = keyframes
+    human = json.loads(json.dumps(m_data)); human["pre_render_gate"]["human_review"]["taste"] = False
+    negative_mutations["human_review"] = human
+    action = json.loads(json.dumps(m_data)); action["beats"][0]["action_type"] = "wiggle"
+    negative_mutations["action_density"] = action
+    negative_results = {}
+    negatives_ok = True
+    for name, fixture in negative_mutations.items():
+        ok, payload = cli_data("validate_storyboard_contract.py", fixture, 1)
+        negative_results[name] = payload.get("errors", [])
+        negatives_ok = negatives_ok and ok and not payload.get("pass")
+    reasoned_budget = json.loads(json.dumps(m_data))
+    reasoned_budget["pre_render_gate"]["render_budget"] = {
+        "full_renders_used": 3, "why_budget_exceeded": "source corruption required a corrected export",
+        "renewed_authorization": True}
+    reasoned_ok, reasoned = cli_data("validate_storyboard_contract.py", reasoned_budget, 0)
+    reasoned_warn = any("render budget exceeded" in item for item in reasoned.get("warnings", []))
+    m_pass = m_ok and m.get("pass") and negatives_ok and reasoned_ok and reasoned.get("pass") and reasoned_warn
+    tests.append(result("M — Storyboard/Live Contract", "entry, lifecycle, page-turn, callback, meme, SFX, budget, Hand, space, and quality gates work",
+                        f"positive={m.get('pass')}, rejected={len(negative_results)}/{len(negative_mutations)}", m_pass,
+                        {"negative_errors": negative_results, "reasoned_budget_warnings": reasoned.get("warnings", [])}))
+
+    # N — Production case 7: caption remains subordinate and scaled.
+    n_data = read(v13 / "caption_scale_pass.json")
+    n_ok, n = cli_data("validate_whiteboard_captions.py", n_data, 0)
+    n_bad = json.loads(json.dumps(n_data)); n_bad["captions"][0]["width"] = 1500
+    n_bad_ok, n_bad_r = cli_data("validate_whiteboard_captions.py", n_bad, 1)
+    n_pass = n_ok and n_bad_ok and n.get("pass") and not n_bad_r.get("pass")
+    tests.append(result("N — Caption Scale and Hierarchy", "subordinate caption passes; oversized caption fails",
+                        f"good={n.get('pass')}, oversized_rejected={not n_bad_r.get('pass')}", n_pass,
+                        {"oversized_errors": n_bad_r.get("errors")}))
+
+    # O — Live cases A–C plus production case 4: while-talking build, absent start, moving Hand, static asset risk.
+    o_data = read(FIXTURES / "whiteboard" / "test_d_draw_before_show.json")
+    seq = o_data["sequences"][0]
+    seq.update({"live_drawing": True, "becoming_stages": ["outline", "fill", "detail"],
+                "voice_start": seq["start"], "voice_end": seq["end"], "draw_start": seq["start"], "draw_end": seq["end"],
+                "high_quality_asset": True, "final_quality_preserved": True})
+    for sample in seq["samples"]: sample["hand_moving"] = True
+    o_ok, o = cli_data("validate_draw_on.py", o_data, 0)
+    o_present = json.loads(json.dumps(o_data)); o_present["sequences"][0]["samples"][0]["reveal"] = .5
+    o_present_ok, o_present_r = cli_data("validate_draw_on.py", o_present, 1)
+    o_stopped = json.loads(json.dumps(o_data)); o_stopped["sequences"][0]["samples"][1]["hand_moving"] = False
+    o_stopped_ok, o_stopped_r = cli_data("validate_draw_on.py", o_stopped, 1)
+    ppt = {"beats": [{"id": "STATIC", "start": 0, "end": 4, "visual_type": "concept motion", "static": True,
+                       "high_quality_asset": True, "meaningful_action": False, "progressive_build": False,
+                       "character_action": False, "complete_information_single_frame": True}]}
+    o_ppt_ok, o_ppt = cli_data("detect_ppt_risk.py", ppt, 0)
+    o_pass = all((o_ok, o_present_ok, o_stopped_ok, o_ppt_ok, o.get("pass"),
+                  not o_present_r.get("pass"), not o_stopped_r.get("pass"), o_ppt.get("risk_level") == "HIGH"))
+    tests.append(result("O — Live Drawing A–H / Static Asset", "meaning becomes during voice; prebuilt start, stopped Hand, and static asset fail",
+                        f"live={o.get('pass')}, start_fail={not o_present_r.get('pass')}, hand_fail={not o_stopped_r.get('pass')}, ppt={o_ppt.get('risk_level')}", o_pass,
+                        {"start_errors": o_present_r.get("errors"), "hand_errors": o_stopped_r.get("errors"), "ppt_scores": o_ppt.get("beat_scores")}))
+
+    # P — Exact objective matrix: Production 1–12 and Live Drawing A–H.
+    p_process = subprocess.run([sys.executable, str(ROOT / "tests" / "run_v1_3_cases.py")],
+                               capture_output=True, text=True, encoding="utf-8", errors="replace")
+    try:
+        p = json.loads(p_process.stdout)
+    except json.JSONDecodeError:
+        p = {"pass": False, "cases": [], "errors": [p_process.stdout[-300:] or p_process.stderr[-300:]]}
+    p_pass = p_process.returncode == 0 and p.get("pass") and len(p.get("cases", [])) == 20
+    tests.append(result("P — Exact v1.3 Case Matrix", "Production 1–12 and Live Drawing A–H all match expected gates",
+                        f"cases={len(p.get('cases', []))}, pass={p.get('pass')}", p_pass,
+                        {"cases": p.get("cases"), "errors": p.get("errors", [])}))
 
     payload = {"pass": all(item["status"] == "PASS" for item in tests), "test_count": len(tests), "tests": tests}
     output = json.dumps(payload, ensure_ascii=False, indent=2)

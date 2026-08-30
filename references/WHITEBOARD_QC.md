@@ -1,5 +1,11 @@
 # Whiteboard Storytelling QC
 
+## v1.3 pre-render additions
+
+Require an action-state storyboard/contact sheet, Caption Routing, Asset Manifest, per-image Entry Method, hero keyframes at approved final quality, and a render budget. When internet-native or live-drawing layers are routed in, require their Punch Map or voice-to-drawing map.
+
+Reject when a full asset appears without Draw/Mask/Build/Transform/intentional Impact; the final asset is degraded into a placeholder; a beat is only Text + Arrow + Box; Hand tip and reveal front separate; reveal continues after the Hand stops; scenes behave like slide pages; captions dominate action; voice and picture disagree; reaction is missing; callback becomes a lesson; SFX continues without an event; or a full render is requested before human keyframe approval.
+
 Use with [WHITEBOARD_STORYTELLING.md](WHITEBOARD_STORYTELLING.md). Automated checks produce evidence and candidates; encoded-output contact sheets and human semantic/aesthetic review remain mandatory.
 
 ## Required evidence

@@ -1,5 +1,13 @@
 # Motion Design
 
+## Event and lifecycle direction
+
+For each object declare Entry, Action/teaching job, useful Hold, and Exit/Erase/Transform. A complete asset in frame N+1 that was absent in frame N needs Draw, Mask, Build, Transform, or intentional Comedy Impact. Otherwise it is a static-image/PPT risk even if the asset is beautiful.
+
+Prefer one primary action at a time. Supporting cards should enter from the action, not accumulate as a small-object wall. Reduce object count before reducing primary-character scale.
+
+For live drawing, voice and drawing overlap: the object becomes while its idea is spoken. Preserve anticipatory empty space, Hand-tip/reveal-front alignment, continuous canvas, and meaningful residue. Avoid hard page turns; erase, transform, or follow an existing object into the next scene.
+
 ## Router
 
 1. If Human or real Screen already teaches the point: `NO EFFECT`.

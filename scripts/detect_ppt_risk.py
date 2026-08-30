@@ -74,6 +74,10 @@ def score_beats(beats: list[dict], concept_types: set[str]) -> list[dict]:
             if static_duration >= 3.0:
                 score += 2
                 reasons.append("static duration >= 3s")
+            same_composition = float(beat.get("same_composition_duration", 0.0))
+            if same_composition > 2.5 and not beat.get("meaningful_action"):
+                score += 2
+                reasons.append("same composition > 2.5s without meaningful action")
             if beat.get("complete_information_single_frame"):
                 score += 2
                 reasons.append("single frame carries complete beat")
@@ -89,6 +93,27 @@ def score_beats(beats: list[dict], concept_types: set[str]) -> list[dict]:
             if beat.get("ui_like_structure"):
                 score += 2
                 reasons.append("UI-like structure")
+            if beat.get("complete_asset_without_entry_method"):
+                score += 3
+                reasons.append("complete asset appears without entry method")
+            if beat.get("page_turn_reset"):
+                score += 2
+                reasons.append("full-canvas page-turn reset")
+            if int(beat.get("page_turn_streak", 0)) >= 5:
+                score += 3
+                reasons.append("five or more consecutive page turns")
+            elif int(beat.get("page_turn_streak", 0)) >= 3:
+                score += 1
+                reasons.append("repeated page-turn pattern")
+            if beat.get("caption_primary"):
+                score += 2
+                reasons.append("caption dominates primary visual")
+            if beat.get("high_quality_asset") and beat.get("meaningful_action") is False:
+                score += 2
+                reasons.append("high-quality asset remains static")
+            if beat.get("series_callback") and float(beat.get("callback_duration", duration)) > float(beat.get("callback_limit", 5.0)):
+                score += 2
+                reasons.append("series callback exceeds declared limit")
             if beat["visual_type"] in concept_types and not any(
                 beat.get(key) for key in ("character_action", "progressive_build", "meaningful_reaction")
             ):

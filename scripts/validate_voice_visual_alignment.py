@@ -49,14 +49,22 @@ def validate(data: dict) -> dict:
                         beat_warnings.append("reveal completion uses the allowed anticipation/lag margin")
         if not str(beat.get("visual_event", "")).strip():
             beat_errors.append("visual_event is required")
+        voice_facts, visual_facts = beat.get("voice_facts"), beat.get("visual_facts")
+        if voice_facts is not None or visual_facts is not None:
+            if not isinstance(voice_facts, dict) or not isinstance(visual_facts, dict):
+                beat_errors.append("voice_facts and visual_facts must both be objects")
+            else:
+                for key in ("counts", "numbers", "terms", "names", "brands", "polarity", "relations"):
+                    if voice_facts.get(key, {}) != visual_facts.get(key, {}):
+                        beat_errors.append(f"semantic mismatch in {key}")
         errors.extend(f"{bid}: {message}" for message in beat_errors)
         warnings.extend(f"{bid}: {message}" for message in beat_warnings)
         rows.append({"id": bid, "status": "FAIL" if beat_errors else ("WARN" if beat_warnings else "PASS"),
                      "errors": beat_errors, "warnings": beat_warnings})
     return {
         "pass": not errors, "beat_count": len(beats), "errors": errors, "warnings": warnings, "beats": rows,
-        "automated_scope": "voice/visual spans, next-beat persistence, keyword/reveal timing",
-        "human_review_required": ["whether intended meaning and visual event are semantically equivalent", "whether anticipation feels natural"],
+        "automated_scope": "voice/visual spans, next-beat persistence, keyword/reveal timing, and declared fact equality",
+        "human_review_required": ["undeclared semantic equivalence", "whether anticipation feels natural"],
     }
 
 

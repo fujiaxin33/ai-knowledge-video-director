@@ -6,7 +6,22 @@
 
 > Community project. Not an official OpenAI product.
 
-Current version: **v1.2.0**
+Current version: **v1.3.0**
+
+## What changed in v1.3
+
+v1.3 is the **Internet-Native Live Drawing Production Pipeline** update. `STANDARD` and the v1.2 whiteboard route remain backward compatible; two optional, composable layers add event-led internet storytelling and Draw While Talking only when the content warrants them.
+
+The release adds:
+
+- clause-level semantic retake detection, approved-script coverage, and a mandatory start-to-end final listen;
+- voice/visual fact checks for counts, numbers, terms, names, brands, polarity, and relations;
+- Internet Punch Maps, cultural-reference policy, real-meme default OFF, and high-quality asset preservation;
+- Hand-as-actor, Hand-tip/reveal sync, continuous canvas, knowledge residue, anticipatory empty space, and page-turn risk;
+- adaptive caption/scale hierarchy, local speed routing, callback duration, event-based SFX, render budgets, hero-keyframe approval, and human gates;
+- 16 executable regression groups, including an exact 20-case matrix for Production 1–12 and Live Drawing A–H.
+
+The production evidence is summarized in [PRODUCTION_EVIDENCE_EP03_EP05.md](PRODUCTION_EVIDENCE_EP03_EP05.md) without including private media or project paths.
 
 ## What changed in v1.2
 
@@ -59,19 +74,21 @@ Approved Script + Original Media
                 ↓
 AI Knowledge Video Director Skill
                 ↓
-Pre-production → First Cut → Polish → Final
+Intake → Speech Lock → Pre-render Direction → Build → Timeline/Render → Final Listening/Release
 ```
 
 它会帮助 Codex：
 
-1. 判断内容等级、横竖画布、`STANDARD` / `WHITEBOARD_STORYTELLING` 模式和主要证据类型；
+1. 判断内容等级、横竖画布、主模式，以及可选的 Internet-Native / Live Drawing 层；
 2. 在Motion之前完成Clean A-roll，并建立Canonical Terms；
 3. 为每句关键信息分配 Human、Original Screen、HyperFrames、Remotion 或 NO EFFECT；
 4. 使用 `Full Context → Focus → Highlight → Hold` 组织软件教学；
 5. 把 Annotation 绑定到最终画布中的真实像素目标；
 6. 按Real Evidence优先级选择真实失败、软件、结果与Repo证据；
 7. 在导出前检查Screen Hygiene、PPT Risk、安全区、闪帧、黑帧、码率、字幕和音频；
-8. 在白板模式下检查渐进绘制、Hand 对齐、角色锚点、口播画面同步、SFX 命中和单行语义字幕。
+8. 在白板模式下检查渐进绘制、Hand 对齐、角色锚点、口播画面同步、SFX 命中和单行语义字幕；
+9. 在完整渲染前检查动作态 Storyboard、英雄关键帧、资产进入方式和渲染预算；
+10. 对最终成片进行从头到尾的听检与人审放行。
 
 ## 工具分工
 
@@ -102,6 +119,9 @@ ai-knowledge-video-director/
 │   ├── WHITEBOARD_STORYTELLING.md
 │   ├── WHITEBOARD_QC.md
 │   ├── WHITEBOARD_FAILURE_PATTERNS.md
+│   ├── INTERNET_NATIVE_STORYTELLING.md
+│   ├── LIVE_DRAWING_STORYTELLING.md
+│   ├── PRODUCTION_GATES.md
 │   └── ...
 ├── templates/
 ├── scripts/
@@ -157,8 +177,11 @@ Use $ai-knowledge-video-director to plan a funny whiteboard knowledge explainer 
 - `validate_sfx_timing.py`
 - `validate_character_anchors.py`
 - `validate_whiteboard_captions.py`
+- `validate_content_routing.py`
+- `validate_final_listening.py`
+- `validate_storyboard_contract.py`
 
-`python tests/run_skill_tests.py` 运行兼容性与白板能力测试 A–I。
+`python tests/run_skill_tests.py` 运行 16 组兼容性、白板、生产门禁、Internet-Native 与 Live Drawing 行为测试；`python tests/run_v1_3_cases.py` 单独运行目标规定的 20 个精确抽象案例。
 
 运行这些脚本通常需要 Python 3、FFmpeg/FFprobe，以及 Pillow 和 NumPy。脚本提供可审查证据，但最终语义完整性和发布仍需人工确认。
 

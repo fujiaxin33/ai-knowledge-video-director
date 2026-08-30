@@ -11,6 +11,12 @@ from pathlib import Path
 
 
 ALLOWED_INSTANT_INTENTS = {"comedy impact", "surprise", "error mark", "explosion", "sudden prop", "visual punch"}
+MODE_ALIASES = {
+    "true draw": "true_stroke", "true_draw": "true_stroke", "mask draw": "progressive_mask",
+    "mask_draw": "progressive_mask", "hand reveal": "hand_reveal", "hand_reveal": "hand_reveal",
+    "assembly build": "assembly_build", "transform": "transform", "comedy pop": "instant_pop",
+    "comedy_pop": "instant_pop",
+}
 
 
 def validate(data: dict) -> dict:
@@ -22,6 +28,7 @@ def validate(data: dict) -> dict:
     for index, seq in enumerate(sequences):
         sid = str(seq.get("id", index))
         mode = str(seq.get("mode", "")).lower()
+        mode = MODE_ALIASES.get(mode, mode)
         start, end = seq.get("start"), seq.get("end")
         seq_errors, seq_warnings = [], []
         if not isinstance(start, (int, float)) or not isinstance(end, (int, float)) or end <= start:
@@ -30,8 +37,19 @@ def validate(data: dict) -> dict:
             intent = str(seq.get("intent", "")).lower()
             if intent not in ALLOWED_INSTANT_INTENTS:
                 seq_errors.append("instant_pop lacks an allowed impact intent")
-        elif mode not in {"true_stroke", "progressive_mask", "assembly_build"}:
+        elif mode not in {"true_stroke", "progressive_mask", "assembly_build", "hand_reveal", "transform"}:
             seq_errors.append(f"unsupported draw mode: {mode}")
+
+        if seq.get("high_quality_asset") and not seq.get("final_quality_preserved"):
+            seq_errors.append("high-quality asset is not declared preserved in the final state")
+        stages = seq.get("becoming_stages")
+        if seq.get("live_drawing") and (not isinstance(stages, list) or len(stages) < 2):
+            seq_errors.append("live drawing requires at least two meaningful becoming stages")
+        if all(key in seq for key in ("voice_start", "voice_end", "draw_start", "draw_end")):
+            vs, ve = float(seq["voice_start"]), float(seq["voice_end"])
+            ds, de = float(seq["draw_start"]), float(seq["draw_end"])
+            if ve <= vs or de <= ds or min(ve, de) <= max(vs, ds):
+                seq_errors.append("draw and related voice must overlap with positive duration")
 
         samples = seq.get("samples", [])
         if mode != "instant_pop" and len(samples) < 3:
@@ -47,6 +65,8 @@ def validate(data: dict) -> dict:
             active = reveal > last_reveal + 1e-6 and 0.01 < reveal < .99
             if active and not sample.get("hand_present"):
                 seq_errors.append(f"sample {sample_index}: active reveal has no Hand")
+            if active and sample.get("hand_moving") is False and not sample.get("autonomous_effect"):
+                seq_errors.append(f"sample {sample_index}: reveal continues after Hand stops")
             hand, front = sample.get("hand_tip"), sample.get("reveal_front")
             if active and (not isinstance(hand, list) or not isinstance(front, list) or len(hand) != 2 or len(front) != 2):
                 seq_errors.append(f"sample {sample_index}: Hand tip and reveal front are required")
@@ -57,7 +77,10 @@ def validate(data: dict) -> dict:
             last_reveal = reveal
         if samples:
             if float(samples[0].get("reveal", 1)) > .15:
-                seq_warnings.append("first sample already reveals more than 15%")
+                if seq.get("live_drawing"):
+                    seq_errors.append("live-drawing final state is already present at the start")
+                else:
+                    seq_warnings.append("first sample already reveals more than 15%")
             if float(samples[-1].get("reveal", 0)) < .90:
                 seq_errors.append("final sample is not substantially complete")
         errors.extend(f"{sid}: {message}" for message in seq_errors)
@@ -67,8 +90,8 @@ def validate(data: dict) -> dict:
     return {
         "pass": not errors, "sequence_count": len(sequences), "errors": errors, "warnings": warnings,
         "sequences": rows,
-        "automated_scope": "structured timing, reveal monotonicity, Hand presence, tip/front distance, and instant-pop intent",
-        "human_review_required": ["stroke naturalness", "semantic part order", "mask-edge quality", "whether an instant punch is tasteful"],
+        "automated_scope": "structured timing, voice/draw overlap, becoming states, asset preservation, reveal monotonicity, Hand motion, tip/front distance, and instant-pop intent",
+        "human_review_required": ["stroke naturalness", "Hand acting purpose", "semantic part order", "mask-edge quality", "whether an instant punch is tasteful"],
     }
 
 

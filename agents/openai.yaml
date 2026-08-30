@@ -1,7 +1,7 @@
 interface:
   display_name: "AI Knowledge Video Director"
-  short_description: "Direct AI knowledge, software, and whiteboard videos"
-  default_prompt: "Use $ai-knowledge-video-director to route, plan, and audit a knowledge, software, or whiteboard storytelling video."
+  short_description: "Direct knowledge, software, whiteboard, and live-drawing videos"
+  default_prompt: "Use $ai-knowledge-video-director to route, plan, and audit a knowledge, software, whiteboard, internet-native, or live-drawing video."
   brand_color: "#F36B21"
 policy:
   allow_implicit_invocation: true

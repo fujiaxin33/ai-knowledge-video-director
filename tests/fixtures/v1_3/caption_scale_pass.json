@@ -1,0 +1,14 @@
+{
+  "canvas": {"width": 1920, "height": 1080},
+  "safe_zone": {"x": 96, "y": 920, "width": 1728, "height": 100},
+  "recommended_characters": 16,
+  "hard_limit_characters": 22,
+  "max_width_ratio": 0.65,
+  "max_height_ratio": 0.055,
+  "v1_3_hierarchy": true,
+  "captions": [{
+    "id": "C1", "start": 0.0, "end": 2.0, "text": "字不同，意思相近", "line_count": 1,
+    "semantic": true, "routing": "ON", "x": 600, "y": 950, "width": 700, "height": 54,
+    "primary_visual_area_ratio": 0.12, "duplicates_central_handwriting": false
+  }]
+}

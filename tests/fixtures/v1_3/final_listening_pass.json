@@ -1,0 +1,29 @@
+{
+  "original_source_verified": true,
+  "semantic_retake_audit": [
+    {"issue_type": "Bad Take -> Good Take", "resolved": true, "failed_clause_removed": true, "good_take_retained": true},
+    {"issue_type": "Phrase Repeat", "resolved": true}
+  ],
+  "stage": "release",
+  "approved_sections": ["intro", "body", "knowledge hero", "limit", "ending", "next hook"],
+  "approved_script_coverage": {"intro": true, "body": true, "knowledge hero": true, "limit": true, "ending": true, "next hook": true},
+  "speech_locked": true,
+  "local_speed_routing": {
+    "applied": true,
+    "global_speed_applied": false,
+    "segments": [{"id": "explanation", "type": "ordinary", "rate": 1.08, "protected": false}, {"id": "reaction", "type": "reaction", "rate": 1.0, "protected": true}],
+    "timing_maps_regenerated": {"voice": true, "captions": true, "visual_anchors": true, "sfx": true}
+  },
+  "clean_aroll_listening": {
+    "start_to_end": true, "asr_only": false, "transcript_only": false,
+    "reviewer": "human reviewer", "master_duration": 94.0, "duration_heard": 94.0,
+    "checks": ["stutter", "repeat", "failed start", "unnatural splice", "breath jump", "meaning duplicate", "broken ending"],
+    "unresolved_issues": [], "approved": true
+  },
+  "final_master_listening": {
+    "start_to_end": true, "asr_only": false, "transcript_only": false,
+    "reviewer": "human reviewer", "master_duration": 92.0, "duration_heard": 92.0,
+    "checks": ["stutter", "repeat", "failed start", "unnatural splice", "breath jump", "meaning duplicate", "broken ending"],
+    "unresolved_issues": [], "approved": true
+  }
+}

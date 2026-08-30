@@ -1,0 +1,172 @@
+{
+  "pass": true,
+  "case_count": 20,
+  "cases": [
+    {
+      "case": "Production-1",
+      "expected": "unremoved failed clause fails",
+      "status": "PASS",
+      "evidence": [
+        "audit 0: bad/good take pair was not resolved at clause level"
+      ]
+    },
+    {
+      "case": "Production-2",
+      "expected": "missing approved ending fails",
+      "status": "PASS",
+      "evidence": [
+        "approved-script coverage missing: ending"
+      ]
+    },
+    {
+      "case": "Production-3",
+      "expected": "voice four vs visual five fails",
+      "status": "PASS",
+      "evidence": [
+        "COUNT: semantic mismatch in counts"
+      ]
+    },
+    {
+      "case": "Production-4",
+      "expected": "semantic object hierarchy may progressively build",
+      "status": "PASS",
+      "evidence": []
+    },
+    {
+      "case": "Production-5",
+      "expected": "independent examples pass only with reset",
+      "status": "PASS",
+      "evidence": [
+        "EXAMPLE-2: independent example lacks semantic reset"
+      ]
+    },
+    {
+      "case": "Production-6",
+      "expected": "asset-quality degradation fails",
+      "status": "PASS",
+      "evidence": [
+        "PUNCH: high-quality final asset is not preserved"
+      ]
+    },
+    {
+      "case": "Production-7",
+      "expected": "caption larger than primary visual fails",
+      "status": "PASS",
+      "evidence": [
+        "C1: caption area is not subordinate to the primary visual"
+      ]
+    },
+    {
+      "case": "Production-8",
+      "expected": "real meme OFF passes and unauthorized ON fails",
+      "status": "PASS",
+      "evidence": [
+        "real meme insert lacks explicit authorization, source/rights, or duration limit"
+      ]
+    },
+    {
+      "case": "Production-9",
+      "expected": "static high-quality comic is HIGH risk",
+      "status": "PASS",
+      "evidence": {
+        "id": "STATIC-COMIC",
+        "score": 11,
+        "level": "HIGH",
+        "reasons": [
+          "static duration >= 3s",
+          "same composition > 2.5s without meaningful action",
+          "single frame carries complete beat",
+          "no character action",
+          "no progressive build",
+          "high-quality asset remains static",
+          "static concept visual type"
+        ]
+      }
+    },
+    {
+      "case": "Production-10",
+      "expected": "callback beyond 6s fails",
+      "status": "PASS",
+      "evidence": [
+        "CALLBACK: callback exceeds declared duration limit"
+      ]
+    },
+    {
+      "case": "Production-11",
+      "expected": "punch without reaction fails",
+      "status": "PASS",
+      "evidence": [
+        "PUNCH: missing reaction",
+        "PUNCH: punch missing reaction"
+      ]
+    },
+    {
+      "case": "Production-12",
+      "expected": "ASR-only review with unresolved repeat fails",
+      "status": "PASS",
+      "evidence": [
+        "audit 2: unresolved semantic retake",
+        "Clean A-roll ASR/transcript-only review cannot pass"
+      ]
+    },
+    {
+      "case": "Live-A",
+      "expected": "Draw While Talking semantic chain passes",
+      "status": "PASS",
+      "evidence": []
+    },
+    {
+      "case": "Live-B",
+      "expected": "complete visual before voice fails",
+      "status": "PASS",
+      "evidence": [
+        "MOUNTAIN: live-drawing final state is already present at the start"
+      ]
+    },
+    {
+      "case": "Live-C",
+      "expected": "Hand and reveal on opposite sides fail",
+      "status": "PASS",
+      "evidence": [
+        "MOUNTAIN: sample 1: Hand/front distance 707.1px > 40.0px"
+      ]
+    },
+    {
+      "case": "Live-D",
+      "expected": "five Clear Canvas -> New Frame beats fail",
+      "status": "PASS",
+      "evidence": [
+        "PAGE-5: five consecutive page-turn resets"
+      ]
+    },
+    {
+      "case": "Live-E",
+      "expected": "70% empty space with imminent Hand passes",
+      "status": "PASS",
+      "evidence": []
+    },
+    {
+      "case": "Live-F",
+      "expected": "70% empty space with static character for 5s fails",
+      "status": "PASS",
+      "evidence": [
+        "PUNCH: large empty space is not anticipatory within 0.5–2.0s",
+        "PUNCH: large empty space holds a static character for 5s"
+      ]
+    },
+    {
+      "case": "Live-G",
+      "expected": "knowledge term emerging beside story passes",
+      "status": "PASS",
+      "evidence": []
+    },
+    {
+      "case": "Live-H",
+      "expected": "Hero Card for every point fails",
+      "status": "PASS",
+      "evidence": [
+        "every knowledge point is routed to a Hero Card"
+      ]
+    }
+  ]
+}

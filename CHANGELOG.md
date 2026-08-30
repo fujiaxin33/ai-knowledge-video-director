@@ -1,5 +1,25 @@
 # Changelog
 
+## v1.3.0 — Internet-Native Live Drawing Production Pipeline
+
+Backward-compatible production-gate release. `STANDARD` and `WHITEBOARD_STORYTELLING` remain primary modes; `INTERNET_NATIVE_STORYTELLING` and `LIVE_DRAWING_STORYTELLING` are optional composable layers.
+
+Added or strengthened:
+
+- semantic retake audit, approved-script coverage, speech lock, local-speed ripple, and final start-to-end listening;
+- voice/visual structured-fact equality;
+- Internet Punch event grammar, cultural-reference policy, real-meme default OFF, and high-quality asset preservation;
+- Draw While Talking, Hand as actor, continuous canvas, knowledge residue, anticipatory empty space, and page-turn prevention;
+- action-state storyboard, entry method, asset lifecycle, scale/caption hierarchy, callback, SFX, render-budget, keyframe, and human gates;
+- new routing, final-listening, and storyboard-contract validators; extended draw, caption, alignment, and PPT-risk validators;
+- backward tests A–E, production regressions 1–12, and Live Drawing regressions A–H within 15 executable test groups.
+
+Known limits:
+
+- automated checks validate declared structured evidence, not comedy taste, drawing beauty, rights ownership, or undeclared semantics;
+- real meme inserts remain OFF unless a project explicitly authorizes and documents them;
+- final release still requires a human keyframe review and full listening pass.
+
 ## v1.2.0 — Whiteboard Storytelling preset
 
 Backward-compatible feature release. The existing Standard workflow remains the default for desktop tutorials, real-software demonstrations, talking head, and evidence-led courses.

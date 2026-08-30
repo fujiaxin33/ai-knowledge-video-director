@@ -36,6 +36,8 @@ def validate(data: dict) -> dict:
             item_errors.append("caption duration must be positive")
         if not text:
             item_errors.append("caption text is empty")
+        if data.get("v1_3_hierarchy") and len(text) < int(data.get("minimum_characters", 6)):
+            item_warnings.append("caption is shorter than the suggested semantic range")
         if "\n" in text or int(caption.get("line_count", 1)) != 1:
             item_errors.append("whiteboard caption must be one line")
         if len(text) > hard_limit:
@@ -52,6 +54,21 @@ def validate(data: dict) -> dict:
                 area_ratio = rect[2] * rect[3] / (float(canvas["width"]) * float(canvas["height"]))
                 if area_ratio > .12:
                     item_warnings.append("caption box area may dominate the whiteboard")
+                width_ratio = rect[2] / float(canvas["width"])
+                height_ratio = rect[3] / float(canvas["height"])
+                if "max_width_ratio" in data and width_ratio > float(data["max_width_ratio"]):
+                    item_errors.append(f"caption width ratio {width_ratio:.3f} exceeds limit")
+                if "max_height_ratio" in data and height_ratio > float(data["max_height_ratio"]):
+                    item_errors.append(f"caption height ratio {height_ratio:.3f} exceeds limit")
+                primary_ratio = caption.get("primary_visual_area_ratio")
+                if primary_ratio is not None and area_ratio >= float(primary_ratio):
+                    item_errors.append("caption area is not subordinate to the primary visual")
+        if caption.get("duplicates_central_handwriting"):
+            item_errors.append("caption duplicates complete central handwriting")
+        if caption.get("duplicates_voice") and caption.get("duplicates_central_text"):
+            item_errors.append("voice, central text, and caption repeat the same meaning")
+        if str(caption.get("routing", "ON")).upper() == "OFF":
+            item_errors.append("caption entry exists although routing is OFF")
         else:
             item_warnings.append("caption geometry is missing; safe-zone check is incomplete")
         if previous is not None:
@@ -67,7 +84,7 @@ def validate(data: dict) -> dict:
     return {
         "pass": not errors, "caption_count": len(captions), "errors": errors, "warnings": warnings,
         "captions": rows,
-        "automated_scope": "line count, length candidates, temporal overlap/repetition, declared safe-zone geometry and area",
+        "automated_scope": "routing, duplication, line count, length, overlap, safe zone, width/height ratio and hierarchy",
         "human_review_required": ["semantic compression", "visual priority", "face/Hand/story collision", "reading rhythm"],
     }
 

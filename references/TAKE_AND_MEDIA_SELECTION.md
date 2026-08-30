@@ -1,5 +1,13 @@
 # Take and Media Selection
 
+## Semantic retake audit — v1.3 gate
+
+Do not equate a clean transcript with a clean performance. Review the original audio and transcript together at clause boundaries. Mark and resolve Word Repeat, Phrase Repeat, Phrase Restart, Sentence Restart, Failed Lead-in/Start, Self Correction, Bad Take -> Good Take, Repeated Complete Take, Meaning Duplicate, and Broken Ending.
+
+When a failed clause is followed by a complete new delivery, remove the failed clause as a unit and retain one intended take. Do not hide it with global speed, keep two near-duplicate takes, or splice arbitrary half-sentences. ASR may collapse repeated speech, so waveform/transcript evidence never replaces listening.
+
+Before lock, produce approved-script coverage by semantic section. When present in the approved source this includes INTRO, BODY, KNOWLEDGE HERO, LIMIT, ENDING, and NEXT HOOK. A faster edit fails if an approved meaning or complete ending disappears. Then listen to the complete Clean A-roll from start to end for stutter, repeat, failed start, unnatural splice, breath jump, meaning duplicate, and broken ending. Only after this listen passes may A-roll become LOCKED. Any later speech or local-speed change reopens this gate plus caption, visual-anchor, transition, and SFX timing.
+
 ## Source lineage
 
 Inventory and identify:

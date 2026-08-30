@@ -1,5 +1,19 @@
 # Subtitle and Audio
 
+## Adaptive caption routing
+
+Route Caption ON/SHORT for ordinary explanation, abstract concepts, faster knowledge delivery, or meaning that the picture cannot fully carry. Route Caption OFF for meme flash, comedy impact, pure reaction, central complete handwriting, readable literal evidence, a clean hero, and the ending question.
+
+Prefer one semantic line, about 55–65% maximum frame width and 4–5.5% frame height in the lower safe area. Caption is third in hierarchy after Character/Action and Knowledge Object. If central handwriting already states the same meaning, remove the duplicate caption.
+
+## Local speed routing
+
+Use natural voice first. Ordinary explanation may be a modest local candidate; dense knowledge may be slightly faster only after listening. Meme, comedy setup, punch, reaction, hero, and ending normally remain 1.00x. Never apply one multiplier to the whole video. Any applied speed change regenerates final voice, caption, visual-anchor, and SFX timing maps.
+
+## SFX V2
+
+SFX serves Impact, Action, and Reaction. Keep voice dominant, use event-level clips, and keep them on a separate removable track. Avoid continuous scribble/noise, a marker sound on every stroke, or impacts without a visible event. Deleting an image/flash must also delete its orphaned SFX.
+
 ## Knowledge subtitles
 
 Two supported directions:

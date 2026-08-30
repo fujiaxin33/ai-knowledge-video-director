@@ -1,5 +1,11 @@
 # Whiteboard Storytelling / Comedy Animation
 
+## Optional v1.3 layers
+
+Whiteboard remains the primary mode. Add [INTERNET_NATIVE_STORYTELLING.md](INTERNET_NATIVE_STORYTELLING.md) for event-led cultural/comedy punches. Add [LIVE_DRAWING_STORYTELLING.md](LIVE_DRAWING_STORYTELLING.md) when drawing should happen with the spoken thought on a continuous canvas. Neither layer is implied by Whiteboard alone.
+
+`DRAW WHILE TALKING` outranks `DRAW BEFORE SHOW` when live drawing is routed in. The Hand becomes an actor and the viewer watches meaning accumulate. Knowledge Hero is optional: use a brief clean reduction only when it improves retention; otherwise let the knowledge map remain as controlled residue.
+
 Read this reference only after the content router selects `WHITEBOARD_STORYTELLING`.
 
 ## Outcome

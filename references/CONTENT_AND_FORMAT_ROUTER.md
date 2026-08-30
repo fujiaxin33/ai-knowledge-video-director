@@ -24,7 +24,7 @@ Use for software teaching, long Prompt/output, tables, GitHub, Obsidian, Codex, 
 
 ## Preset selection
 
-### Mode first
+### Primary mode first, optional layers second
 
 Choose one primary mode before selecting a visual preset:
 
@@ -35,6 +35,24 @@ Choose one primary mode before selecting a visual preset:
 
 If the user says only “knowledge video,” choose the mode that best serves the learning outcome and evidence. Recommend or ask when both are plausible; do not silently apply whiteboard rules to a screen demo.
 
+After choosing the primary mode, independently route optional layers:
+
+| Layer | Route IN when | Route OUT when |
+| --- | --- | --- |
+| `INTERNET_NATIVE_STORYTELLING` | cultural recognition, reaction timing, visual surprise, or a punch event improves comprehension for the target audience/platform | enterprise/formal delivery, requested no humor, meme would compete with evidence, or rights/source cannot be resolved |
+| `LIVE_DRAWING_STORYTELLING` | the idea should visibly become true while it is spoken; Hand action, continuous canvas, and accumulated knowledge residue improve understanding | the beat primarily proves real UI, requires a finished frame immediately, or drawing would only decorate narration |
+
+Valid compositions include:
+
+- `STANDARD` only: desktop tutorial, product walkthrough, formal course.
+- `STANDARD + LIVE_DRAWING_STORYTELLING`: real screen remains primary while a Hand annotates or builds a compact concept beside it.
+- `WHITEBOARD_STORYTELLING` only: restrained drawn explanation without meme language.
+- `WHITEBOARD_STORYTELLING + INTERNET_NATIVE_STORYTELLING`: event-led comedy/recognition with whiteboard continuity.
+- `WHITEBOARD_STORYTELLING + LIVE_DRAWING_STORYTELLING`: voice-led continuous drawing and knowledge residue.
+- all three: only when story, internet punch, and live drawing each perform a distinct teaching job.
+
+Do not route by platform name alone. Bilibili, Xiaohongshu, or short-video delivery makes internet-native a candidate, not a default. “No humor” explicitly routes the internet layer OUT.
+
 1. If a project `DESIGN.md` exists, its brand tokens win.
 2. Use `Editorial Brand` when the brand is warm, restrained, and explanatory.
 3. Use `Presenter Motion UI` only when the reference intent is information-stage rhythm and presenter/content integration.
@@ -44,4 +62,4 @@ If the user says only “knowledge video,” choose the mode that best serves th
 
 ## Required classification output
 
-Record: mode, level, canvas, audience, learning outcome, target duration, primary evidence, selected preset, and one-sentence rationale.
+Record: primary mode, optional layers IN/OUT with rationale, level, canvas, audience, learning outcome, target duration, primary evidence, selected preset, real-meme default, and one-sentence rationale.
